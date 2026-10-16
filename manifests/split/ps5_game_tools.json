@@ -1,0 +1,69 @@
+{
+  "name": "Z3nT1's PLUZ5 -- Game Tools",
+  "payloads": [
+    {
+      "name": "BackPork",
+      "filename": "BackPork_v0.1.elf",
+      "url": "https://github.com/BestPig/BackPork/releases/download/0.1/ps5-backpork.elf",
+      "backup_url": null,
+      "description": "unset -- fill in from release notes",
+      "version": "0.1",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "Game Tools",
+      "author": "BestPig",
+      "author_url": "https://github.com/BestPig",
+      "checksum": "d74e4cd119b2bb1fd423f2f5b1c9a7f096b3e588c753af1ab48b983d56216a52"
+    },
+    {
+      "name": "CheatRunner (RDX fork)",
+      "filename": "CheatRunner-RDX_v0.18.elf",
+      "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18/CheatRunner.elf",
+      "backup_url": null,
+      "description": "unset -- fill in from release notes",
+      "version": "0.18",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "Game Tools",
+      "author": "notmaj0r",
+      "author_url": "https://github.com/notmaj0r",
+      "checksum": "4ae1ea4e37b2e67d5487355ddf671f166861ed6dceea348c048ad060770c0140"
+    },
+    {
+      "name": "CheatRunner",
+      "filename": "CheatRunner_v0.18.elf",
+      "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18/CheatRunner.elf",
+      "backup_url": null,
+      "description": "unset -- fill in from release notes",
+      "version": "0.18",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "Game Tools",
+      "author": "notmaj0r",
+      "author_url": "https://github.com/notmaj0r",
+      "checksum": "4ae1ea4e37b2e67d5487355ddf671f166861ed6dceea348c048ad060770c0140"
+    },
+    {
+      "name": "ShadowMountPlus (Beta)",
+      "filename": "ShadowMountPlus-Beta_v1.7beta4.elf",
+      "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta4/shadowmountplus.elf",
+      "backup_url": null,
+      "description": "Slower-moving, more-tested track. Always kept regardless of retention count.",
+      "version": "1.7beta4",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "Game Tools",
+      "author": "drakmor",
+      "author_url": "https://github.com/drakmor",
+      "checksum": "fc4e5f715e76660ce34bde2adb10eaf1d069cb2cdf06f7a380896dfb62bd0c4a"
+    }
+  ]
+}

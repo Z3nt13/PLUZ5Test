@@ -1,0 +1,69 @@
+{
+  "name": "Z3nT1's PLUZ5 -- System Utility",
+  "payloads": [
+    {
+      "name": "ChronicLoader",
+      "filename": "ChronicLoader_v0.1.elf",
+      "url": "https://github.com/StonedModder/ChronicLoader-PS5-Payload/releases/download/0.1/chronicloader.elf",
+      "backup_url": null,
+      "description": "PS5 payload updater/autoloader -- checks GitHub releases, manages autoload.txt.",
+      "version": "0.1",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "System Utility",
+      "author": "StonedModder",
+      "author_url": "https://github.com/StonedModder",
+      "checksum": "3561120f85e0ec32de5de15cdd61a1fe8d5146eb4c6aa99ee88209914a2774b1"
+    },
+    {
+      "name": "JailbreakStore",
+      "filename": "JailbreakStore_vRelease.elf",
+      "url": "https://github.com/notmaj0r/JailbreakStore/releases/download/Release/JailbreakStore.elf",
+      "backup_url": null,
+      "description": "unset -- fill in from release notes",
+      "version": "Release",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "System Utility",
+      "author": "notmaj0r",
+      "author_url": "https://github.com/notmaj0r",
+      "checksum": "deb47ab4a9cee35c58a6777fb99eaeb397528e2518b4d4f5db52e8dce373de55"
+    },
+    {
+      "name": "ProsperoMgr",
+      "filename": "ProsperoMgr_v1.1.elf",
+      "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.1/ProsperoMgr.elf",
+      "backup_url": null,
+      "description": "All-in-one PS5 manager -- files, transfers, PKG installer, save backups, payload autoloader.",
+      "version": "1.1",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "System Utility",
+      "author": "notmaj0r",
+      "author_url": "https://github.com/notmaj0r",
+      "checksum": "e7a6bb544adb2fb2a61aa9cc83b0ad15f70b32d7511a3de0f1fb88812f11983c"
+    },
+    {
+      "name": "PS5 Payload Manager",
+      "filename": "ps5-payload-manager_v0.6.1.elf",
+      "url": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.6.1/pldmgr_v0.6.1.elf",
+      "backup_url": null,
+      "description": "This is pldmgr itself -- the tool our manifest schema targets compatibility with.",
+      "version": "0.6.1",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "System Utility",
+      "author": "itsPLK",
+      "author_url": "https://github.com/itsPLK",
+      "checksum": "5165cbe4c13360828bd0f5d558cdbb9e2d55b0660b1dc7f7a58d3f4ee9e23285"
+    }
+  ]
+}

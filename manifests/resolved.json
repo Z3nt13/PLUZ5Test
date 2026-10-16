@@ -1,1 +1,266 @@
-{}
+{
+  "BackPork/default": {
+    "filename": "BackPork_v0.1.elf",
+    "version": "0.1",
+    "tag": "0.1",
+    "url": "https://github.com/BestPig/BackPork/releases/download/0.1/ps5-backpork.elf",
+    "size": 99800,
+    "sha256": "d74e4cd119b2bb1fd423f2f5b1c9a7f096b3e588c753af1ab48b983d56216a52"
+  },
+  "CheatRunner/RDX": {
+    "filename": "CheatRunner-RDX_v0.18.elf",
+    "version": "0.18",
+    "tag": "v0.18",
+    "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18/CheatRunner.elf",
+    "size": 8272800,
+    "sha256": "4ae1ea4e37b2e67d5487355ddf671f166861ed6dceea348c048ad060770c0140"
+  },
+  "CheatRunner/default": {
+    "filename": "CheatRunner_v0.18.elf",
+    "version": "0.18",
+    "tag": "v0.18",
+    "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18/CheatRunner.elf",
+    "size": 8272800,
+    "sha256": "4ae1ea4e37b2e67d5487355ddf671f166861ed6dceea348c048ad060770c0140"
+  },
+  "ChronicLoader-PS5-Payload/default": {
+    "filename": "ChronicLoader-PS5-Payload_v0.1.elf",
+    "version": "0.1",
+    "tag": "0.1",
+    "url": "https://github.com/StonedModder/ChronicLoader-PS5-Payload/releases/download/0.1/chronicloader.elf",
+    "size": 2669960,
+    "sha256": "3561120f85e0ec32de5de15cdd61a1fe8d5146eb4c6aa99ee88209914a2774b1"
+  },
+  "ChronicLoader/default": {
+    "filename": "ChronicLoader_v0.1.elf",
+    "version": "0.1",
+    "tag": "0.1",
+    "url": "https://github.com/StonedModder/ChronicLoader-PS5-Payload/releases/download/0.1/chronicloader.elf",
+    "size": 2669960,
+    "sha256": "3561120f85e0ec32de5de15cdd61a1fe8d5146eb4c6aa99ee88209914a2774b1"
+  },
+  "JailbreakStore/default": {
+    "filename": "JailbreakStore_vRelease.elf",
+    "version": "Release",
+    "tag": "Release",
+    "url": "https://github.com/notmaj0r/JailbreakStore/releases/download/Release/JailbreakStore.elf",
+    "size": 2261576,
+    "sha256": "deb47ab4a9cee35c58a6777fb99eaeb397528e2518b4d4f5db52e8dce373de55"
+  },
+  "PIZZA-HEN/default": {
+    "filename": "PIZZA-HEN_v2.00.elf",
+    "version": "2.00",
+    "tag": "v2.00",
+    "url": "https://github.com/Michele-M-Media/PIZZA-HEN/releases/download/v2.00/PIZZA-HEN-v2.00.elf",
+    "size": 62376400,
+    "sha256": "8535d399612d61c50a528b2ae416f2fc3ccfb7480296df99c17302583fb3e345"
+  },
+  "ProsperoMgr/default": {
+    "filename": "ProsperoMgr_v1.1.elf",
+    "version": "1.1",
+    "tag": "v1.1",
+    "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.1/ProsperoMgr.elf",
+    "size": 8841088,
+    "sha256": "e7a6bb544adb2fb2a61aa9cc83b0ad15f70b32d7511a3de0f1fb88812f11983c"
+  },
+  "ShadowMountPlus/Beta": {
+    "filename": "ShadowMountPlus-Beta_v1.7beta4.elf",
+    "version": "1.7beta4",
+    "tag": "1.7beta4",
+    "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta4/shadowmountplus.elf",
+    "size": 2475496,
+    "sha256": "fc4e5f715e76660ce34bde2adb10eaf1d069cb2cdf06f7a380896dfb62bd0c4a"
+  },
+  "elf-launcher/default": {
+    "filename": "elf-launcher_v2.0.5.elf",
+    "version": "2.0.5",
+    "tag": "v2.0.5",
+    "url": "https://github.com/X-F1REBALL-X/elf-launcher/releases/download/v2.0.5/elf-launcher.elf",
+    "size": 1409032,
+    "sha256": "1b4494e669ef07525c77036777d36a20f1eb81a708fe8262b26ffffa9452f547"
+  },
+  "elfldr/default": {
+    "filename": "elfldr_v0.26.elf",
+    "version": "0.26",
+    "tag": "v0.26",
+    "url": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.26/elfldr-ps5.elf",
+    "size": 394480,
+    "sha256": "ed6d587a057c09d6a95b2176e336d9ffc605e547ac56462128b029e47b8ccea1"
+  },
+  "elfldr/itsPLK": {
+    "filename": "elfldr-itsPLK_v0.26-bb1e117.elf",
+    "version": "0.26-bb1e117",
+    "tag": "v0.26-bb1e117",
+    "url": "https://github.com/itsPLK/ps5-elfldr/releases/download/v0.26-bb1e117/elfldr-ps5-v0.26-bb1e117.elf",
+    "size": 394480,
+    "sha256": "fa3f0c2b778318000982ada05c01bde70ac875c85e4be6fcc9b5ba836f6d1c3c"
+  },
+  "etaHEN/EchoStretch": {
+    "filename": "etaHEN-EchoStretch_v1.0b.bin",
+    "version": "1.0b",
+    "tag": "1.0b",
+    "url": "https://github.com/etaHEN/etaHEN/releases/download/1.0b/etaHEN-1.0b.bin",
+    "size": 1145008,
+    "sha256": "9669c993a1036ac28cb7a84f7fc6f12aeafbf9be1104169d72547a851e09b2d4"
+  },
+  "fgg-unpack/default": {
+    "filename": "fgg-unpack_v0.1.elf",
+    "version": "0.1",
+    "tag": "v0.1",
+    "url": "https://github.com/FGGstore/FGG-Unpack/releases/download/v0.1/fgg-unpack.elf",
+    "size": 319656,
+    "sha256": "e8c8e57bbda31b5d16d131797aac6f83b555cae8d439b1f475c952f3d9554eff"
+  },
+  "ftpsrv/ps5-payload": {
+    "filename": "ftpsrv-ps5-payload_v0.21.1.elf",
+    "version": "0.21.1",
+    "tag": "v0.21.1",
+    "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21.1/ftpsrv-ps5.elf",
+    "size": 191864,
+    "sha256": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
+  },
+  "hwinfo-bench/default": {
+    "filename": "hwinfo-bench_v0.1.elf",
+    "version": "0.1",
+    "tag": "0.1",
+    "url": "https://github.com/drakmor/ps5-hwinfo/releases/download/0.1/hwinfo_bench.elf",
+    "size": 116160,
+    "sha256": "4514bdbc0c556df1a66544615942d5087d1cbee5c2026b3b66e688ba01e5a5b0"
+  },
+  "hwinfo-sysinfo/default": {
+    "filename": "hwinfo-sysinfo_v0.1.elf",
+    "version": "0.1",
+    "tag": "0.1",
+    "url": "https://github.com/drakmor/ps5-hwinfo/releases/download/0.1/hwinfo_sysinfo.elf",
+    "size": 148928,
+    "sha256": "ad5014112dec619779619d0ea01a984b3c8267fed682eca5687f34c9eade51cb"
+  },
+  "kstuff-lite/EchoStretch": {
+    "filename": "kstuff-lite-EchoStretch_v1.11.elf",
+    "version": "1.11",
+    "tag": "v1.11",
+    "url": "https://github.com/EchoStretch/kstuff-lite/releases/download/v1.11/kstuff.elf",
+    "size": 1737080,
+    "sha256": "ab9a6cb4d3b1daf139d4d646e402b1cf569071acd64599c936d7a3a6164dc779"
+  },
+  "onionHEN/default": {
+    "filename": "onionHEN_v0.9.0.elf",
+    "version": "0.9.0",
+    "tag": "v0.9.0",
+    "url": "https://github.com/aydencharles/onionHEN/releases/download/v0.9.0/OnionHEN.elf",
+    "size": 4676224,
+    "sha256": "1f1f7c883d5d998be1d95d7d80b718f85180f8156f257661b0f445a7c6b7c212"
+  },
+  "ps5-payload-manager/default": {
+    "filename": "ps5-payload-manager_v0.6.1.elf",
+    "version": "0.6.1",
+    "tag": "v0.6.1",
+    "url": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.6.1/pldmgr_v0.6.1.elf",
+    "size": 3484120,
+    "sha256": "5165cbe4c13360828bd0f5d558cdbb9e2d55b0660b1dc7f7a58d3f4ee9e23285"
+  },
+  "ps5-pkg-manager/default": {
+    "filename": "ps5-pkg-manager_v1.5.1.elf",
+    "version": "1.5.1",
+    "tag": "v1.5.1",
+    "url": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.5.1/pkg-manager_v1.5.1.elf",
+    "size": 1988168,
+    "sha256": "82e3548edcc41419b644482cccaef65689334fc0315dc20247f48b90bf182dca"
+  },
+  "ps5-self-decrypter-full-system/default": {
+    "filename": "ps5-self-decrypter-full-system_v0.5.2.elf",
+    "version": "0.5.2",
+    "tag": "v0.5.2",
+    "url": "https://github.com/idlesauce/PS5-SELF-Decrypter/releases/download/v0.5.2/ps5-self-decrypter-full-system.elf",
+    "size": 128608,
+    "sha256": "46340d3048a977f5603b3def0a0ba1c85b5c182891388442e51b39e281257b6a"
+  },
+  "ps5-self-decrypter-game/default": {
+    "filename": "ps5-self-decrypter-game_v0.5.2.elf",
+    "version": "0.5.2",
+    "tag": "v0.5.2",
+    "url": "https://github.com/idlesauce/PS5-SELF-Decrypter/releases/download/v0.5.2/ps5-self-decrypter-game.elf",
+    "size": 128608,
+    "sha256": "190b350759b4f9d50949325e84d131e0953f37a9df271c329ba43c80c0ac7a57"
+  },
+  "ps5-self-decrypter-shellcore/default": {
+    "filename": "ps5-self-decrypter-shellcore_v0.5.2.elf",
+    "version": "0.5.2",
+    "tag": "v0.5.2",
+    "url": "https://github.com/idlesauce/PS5-SELF-Decrypter/releases/download/v0.5.2/ps5-self-decrypter-shellcore.elf",
+    "size": 128608,
+    "sha256": "15050c691c21c790ae970a1ee99ad3918dd1065fe5512c762fccee6d521c8066"
+  },
+  "ps5-self-decrypter-system-common-lib/default": {
+    "filename": "ps5-self-decrypter-system-common-lib_v0.5.2.elf",
+    "version": "0.5.2",
+    "tag": "v0.5.2",
+    "url": "https://github.com/idlesauce/PS5-SELF-Decrypter/releases/download/v0.5.2/ps5-self-decrypter-system-common-lib.elf",
+    "size": 128608,
+    "sha256": "6a16c6457c604db4846632510da0975f49faba08e6cab9cfd7f84d78b4557d97"
+  },
+  "ps5-self-pager-full-system/default": {
+    "filename": "ps5-self-pager-full-system_v1.2.elf",
+    "version": "1.2",
+    "tag": "v1.2",
+    "url": "https://github.com/idlesauce/ps5-self-pager/releases/download/v1.2/ps5-self-pager-full-system.elf",
+    "size": 110848,
+    "sha256": "fb498d4112611619150281e0c44afbd09f144c09eaca3ab3f5b306b39450d13a"
+  },
+  "ps5-self-pager-game/default": {
+    "filename": "ps5-self-pager-game_v1.2.elf",
+    "version": "1.2",
+    "tag": "v1.2",
+    "url": "https://github.com/idlesauce/ps5-self-pager/releases/download/v1.2/ps5-self-pager-game.elf",
+    "size": 110848,
+    "sha256": "73d94fea5de9086cac26385c117a0b3098890c447d67536877fb7b51c9145aac"
+  },
+  "ps5-self-pager-shellcore/default": {
+    "filename": "ps5-self-pager-shellcore_v1.2.elf",
+    "version": "1.2",
+    "tag": "v1.2",
+    "url": "https://github.com/idlesauce/ps5-self-pager/releases/download/v1.2/ps5-self-pager-shellcore.elf",
+    "size": 110456,
+    "sha256": "2b500bc356b5bcfca5c3e5187bcec0a37c80ed05e39348b8f06bd2e5a6f3342b"
+  },
+  "ps5-self-pager-system-common-lib/default": {
+    "filename": "ps5-self-pager-system-common-lib_v1.2.elf",
+    "version": "1.2",
+    "tag": "v1.2",
+    "url": "https://github.com/idlesauce/ps5-self-pager/releases/download/v1.2/ps5-self-pager-system-common-lib.elf",
+    "size": 110760,
+    "sha256": "a86c3e69ed38656310b41af4f9221bdb2264ff4daf93fb4c2515fd54a216b701"
+  },
+  "ps5-webkit-autoloader/default": {
+    "filename": "ps5-webkit-autoloader_v0.6.1.elf",
+    "version": "0.6.1",
+    "tag": "v0.6.1",
+    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.6.1/webkit-autoloader-installer_v0.6.1.elf",
+    "size": 3556608,
+    "sha256": "f662c75a502e4f1bc41b055dcb490625f8222c499ce437dc80f439a3a279e93f"
+  },
+  "ps5library-agent/default": {
+    "filename": "ps5library-agent_v0.2.91.elf",
+    "version": "0.2.91",
+    "tag": "v0.2.91",
+    "url": "https://github.com/rdiol12/PS5Library/releases/download/v0.2.91/ps5library-agent.elf",
+    "size": 13973400,
+    "sha256": "ac78389a628401edba3c081f00156238ad5652b1b7ad241f5ccc7713179f0c82"
+  },
+  "websrv/default": {
+    "filename": "websrv_v0.34.elf",
+    "version": "0.34",
+    "tag": "v0.34",
+    "url": "https://github.com/ps5-payload-dev/websrv/releases/download/v0.34/websrv-ps5.elf",
+    "size": 1597864,
+    "sha256": "54730c867c6e1148536fdcb370e63a7762d989ea87b62488ad4caff64d43f263"
+  },
+  "wk-autoloader/default": {
+    "filename": "wk-autoloader_v1.1.2.elf",
+    "version": "1.1.2",
+    "tag": "v1.1.2",
+    "url": "https://github.com/X-F1REBALL-X/wk-autoloader/releases/download/v1.1.2/wk-autoloader.elf",
+    "size": 5604608,
+    "sha256": "c5489f708e0e19769fd8d84c667942916778af39924d23c13e42f9a8f93c544c"
+  }
+}

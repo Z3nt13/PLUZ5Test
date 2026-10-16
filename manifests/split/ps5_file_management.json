@@ -1,0 +1,69 @@
+{
+  "name": "Z3nT1's PLUZ5 -- File Management",
+  "payloads": [
+    {
+      "name": "ELF Launcher (X-F1REBALL-X)",
+      "filename": "elf-launcher_v2.0.5.elf",
+      "url": "https://github.com/X-F1REBALL-X/elf-launcher/releases/download/v2.0.5/elf-launcher.elf",
+      "backup_url": null,
+      "description": "port 1000",
+      "version": "2.0.5",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "File Management",
+      "author": "X-F1REBALL-X",
+      "author_url": "https://github.com/X-F1REBALL-X",
+      "checksum": "1b4494e669ef07525c77036777d36a20f1eb81a708fe8262b26ffffa9452f547"
+    },
+    {
+      "name": "FGG Unpack (FGGstore)",
+      "filename": "fgg-unpack_v0.1.elf",
+      "url": "https://github.com/FGGstore/FGG-Unpack/releases/download/v0.1/fgg-unpack.elf",
+      "backup_url": null,
+      "description": "Background watcher ELF that auto-extracts .zip and .7z archives uploaded via FTP, in-place. Great for uploading compressed game folders. Ships with .elf.json for pldmgr. GPL-3.0.",
+      "version": "0.1",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "File Management",
+      "author": "FGGstore",
+      "author_url": "https://github.com/FGGstore",
+      "checksum": "e8c8e57bbda31b5d16d131797aac6f83b555cae8d439b1f475c952f3d9554eff"
+    },
+    {
+      "name": "PS5 PKG Manager (itsPLK)",
+      "filename": "ps5-pkg-manager_v1.5.1.elf",
+      "url": "https://github.com/itsPLK/ps5-pkg-manager/releases/download/v1.5.1/pkg-manager_v1.5.1.elf",
+      "backup_url": null,
+      "description": "Console-side PKG browser and installer (pkgmgr.elf). Scans USB and SMB shares for PKG files and installs them directly on the PS5. GPL-3.0.",
+      "version": "1.5.1",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "File Management",
+      "author": "itsPLK",
+      "author_url": "https://github.com/itsPLK",
+      "checksum": "82e3548edcc41419b644482cccaef65689334fc0315dc20247f48b90bf182dca"
+    },
+    {
+      "name": "PS5Library Agent (rdiol12)",
+      "filename": "ps5library-agent_v0.2.91.elf",
+      "url": "https://github.com/rdiol12/PS5Library/releases/download/v0.2.91/ps5library-agent.elf",
+      "backup_url": null,
+      "description": "Console-side agent ELF for the PS5Library native storefront. Pairs with PS5Library.pkg. Provides the on-console backend that the storefront UI talks to. GPL-3.0.",
+      "version": "0.2.91",
+      "fw_min": null,
+      "fw_max": null,
+      "platform": "ps5",
+      "hw_target": null,
+      "category": "File Management",
+      "author": "rdiol12",
+      "author_url": "https://github.com/rdiol12",
+      "checksum": "ac78389a628401edba3c081f00156238ad5652b1b7ad241f5ccc7713179f0c82"
+    }
+  ]
+}
