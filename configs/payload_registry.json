@@ -1,1 +1,772 @@
-{"schema_version":6,"comment":"Your sources. Empty on purpose: build yours with web/builder.html, or load examples/example-full.json there to start from a full list.","payloads":{}}
+{
+  "schema_version": 6,
+  "comment": "Keyed by payload name. Each payload has one or more variants. fw_min/fw_max are hand-typed from the dev's own release notes -- never auto-parsed. author/author_url are attribution fields. source_repo is the project's primary URL; backup_url is an optional mirror/fallback location for the SAME artifact -- if you have files sourced from both, run dedupe to confirm they're byte-identical (matching SHA-256 means it's the same artifact, safe to trust either source). This isn't auto-verified yet -- core/ never fetches over the network by design, so cross-checking backup_url against source_repo is future discovery/sync-engine work, not something done automatically today. protected_fallback=true means this artifact is NEVER deleted by retention even if older/superseded. Categories use the condensed 10-category list in categories.json v3. v6: added onionHEN, ChronicLoader, PIZZA-HEN (as PIZZAHEN), kstuff-lite (as kstufflite), BackPork, ps5-webkit-autoloader, ps5-payload-manager, ftpsrv, ProsperoMgr, JailbreakStore; added itsPLK variant to elfldr; confirmed etaHEN-Zecoxao's real hosting URL. Registry keys avoid internal hyphens where the real filename's base name has none (PIZZAHEN, kstufflite, webkitautoloader, ps5payloadmanager) purely so the key reads cleanly -- resolve_identity() matches against whatever the actual filename's name_part is, so this is a naming choice, not a technical requirement. v7: fixed registry keys that didn't match real filenames -- PIZZAHEN->PIZZA-HEN, ChronicLoader->ChronicLoader-PS5-Payload, kstufflite->kstuff-lite, webkitautoloader->webkit-autoloader (split into installer/host variants), ps5payloadmanager->ps5-payload-manager. Caught by testing real filenames against resolve_identity() before shipping, not assumed correct.",
+  "payloads": {
+    "BackPork": {
+      "variants": {
+        "default": {
+          "display_name": "BackPork",
+          "source_repo": "https://github.com/BestPig/BackPork",
+          "author": "BestPig",
+          "author_url": "https://github.com/BestPig",
+          "backup_url": null,
+          "category": "Game Tools",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "CheatRunner": {
+      "variants": {
+        "default": {
+          "display_name": "CheatRunner",
+          "source_repo": "https://github.com/notmaj0r/CheatRunner",
+          "author": "notmaj0r",
+          "author_url": "https://github.com/notmaj0r",
+          "backup_url": null,
+          "category": "Game Tools",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        },
+        "RDX": {
+          "display_name": "CheatRunner (RDX fork)",
+          "source_repo": "https://github.com/notmaj0r/CheatRunner",
+          "author": "notmaj0r",
+          "author_url": "https://github.com/notmaj0r",
+          "backup_url": null,
+          "category": "Game Tools",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "ChronicLoader-PS5-Payload": {
+      "variants": {
+        "default": {
+          "display_name": "ChronicLoader",
+          "source_repo": "https://github.com/StonedModder/ChronicLoader-PS5-Payload",
+          "author": "StonedModder",
+          "author_url": "https://github.com/StonedModder",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "PS5 payload updater/autoloader -- downloads from configured GitHub releases and writes autoload.txt."
+        }
+      }
+    },
+    "ChronicLoader": {
+      "variants": {
+        "default": {
+          "display_name": "ChronicLoader",
+          "source_repo": "https://github.com/StonedModder/ChronicLoader-PS5-Payload",
+          "author": "StonedModder",
+          "author_url": "https://github.com/StonedModder",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "PS5 payload updater/autoloader -- checks GitHub releases, manages autoload.txt."
+        }
+      }
+    },
+    "elf-launcher": {
+      "variants": {
+        "default": {
+          "display_name": "ELF Launcher (X-F1REBALL-X)",
+          "source_repo": "https://github.com/X-F1REBALL-X/elf-launcher",
+          "author": "X-F1REBALL-X",
+          "author_url": "https://github.com/X-F1REBALL-X",
+          "backup_url": null,
+          "category": "File Management",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": 1000,
+          "protected_fallback": false,
+          "note": "Home screen tile + browser UI for sending ELF payloads to the PS5 (elfldr on port 9021). Serves launcher at port 1000. Companion to wk-autoloader. FOSS."
+        }
+      }
+    },
+    "elfldr": {
+      "variants": {
+        "default": {
+          "display_name": "elfldr",
+          "source_repo": "https://github.com/ps5-payload-dev/elfldr",
+          "author": "ps5-payload-dev",
+          "author_url": "https://github.com/ps5-payload-dev",
+          "backup_url": null,
+          "category": "Network",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": 9021,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        },
+        "itsPLK": {
+          "display_name": "elfldr (itsPLK)",
+          "source_repo": "https://github.com/itsPLK/ps5-elfldr",
+          "author": "itsPLK",
+          "author_url": "https://github.com/itsPLK",
+          "backup_url": null,
+          "category": "Network",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "etaHEN": {
+      "variants": {
+        "EchoStretch": {
+          "display_name": "etaHEN (EchoStretch)",
+          "source_repo": "https://github.com/etaHEN/etaHEN",
+          "author": "EchoStretch / LightningMods",
+          "author_url": "https://github.com/etaHEN",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "beta",
+          "fw_min": "3.00",
+          "fw_max": "12.70",
+          "port": null,
+          "protected_fallback": false,
+          "note": "Fast-moving mainline. Normal retention -- newer builds may carry an expiry timestamp (_ExpiYYYYMMDD).",
+          "asset_pattern": "etaHEN-*.bin"
+        },
+        "Zecoxao": {
+          "display_name": "etaHEN (Zecoxao)",
+          "source_repo": "https://github.com/zecoxao/zecoxao.github.io",
+          "author": "Zecoxao",
+          "author_url": "https://github.com/zecoxao",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": "3.00",
+          "fw_max": "11.40",
+          "port": null,
+          "protected_fallback": true,
+          "note": "No expiry timer. More stable on FW 11.40 than current EchoStretch beta. Permanent fallback. Exact upstream path: luasauce/payloads/etaHEN-2.6B.bin -- correction confirmed via direct link, not guessed."
+        }
+      }
+    },
+    "fgg-unpack": {
+      "variants": {
+        "default": {
+          "display_name": "FGG Unpack (FGGstore)",
+          "source_repo": "https://github.com/FGGstore/FGG-Unpack",
+          "author": "FGGstore",
+          "author_url": "https://github.com/FGGstore",
+          "backup_url": null,
+          "category": "File Management",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Background watcher ELF that auto-extracts .zip and .7z archives uploaded via FTP, in-place. Great for uploading compressed game folders. Ships with .elf.json for pldmgr. GPL-3.0."
+        }
+      }
+    },
+    "ftpsrv": {
+      "variants": {
+        "ps5-payload": {
+          "display_name": "ftpsrv (ps5-payload-dev)",
+          "source_repo": "https://github.com/ps5-payload-dev/ftpsrv",
+          "author": "ps5-payload-dev",
+          "author_url": "https://github.com/ps5-payload-dev",
+          "backup_url": null,
+          "category": "Network",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes",
+          "asset_pattern": "ftpsrv-ps5.elf"
+        }
+      }
+    },
+    "garlic-savemgr": {
+      "variants": {
+        "default": {
+          "display_name": "Garlic Save Manager",
+          "source_repo": "https://git.etawen.dev/earthonion/garlic-savemgr",
+          "author": "earthonion",
+          "author_url": "https://git.etawen.dev/earthonion",
+          "backup_url": null,
+          "category": "File Management",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "separate tool from garlic-worker, shared prefix only"
+        }
+      }
+    },
+    "garlic-worker": {
+      "variants": {
+        "default": {
+          "display_name": "Garlic Worker",
+          "source_repo": "https://git.etawen.dev/earthonion/garlic-worker",
+          "author": "earthonion",
+          "author_url": "https://git.etawen.dev/earthonion",
+          "backup_url": null,
+          "category": "File Management",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "separate tool from garlic-savemgr, shared prefix only"
+        }
+      }
+    },
+    "hwinfo-bench": {
+      "variants": {
+        "default": {
+          "display_name": "HWInfo Bench",
+          "source_repo": "https://github.com/drakmor/ps5-hwinfo",
+          "author": "drakmor",
+          "author_url": "https://github.com/drakmor",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "separate tool from hwinfo-sysinfo, shared prefix only",
+          "asset_pattern": "hwinfo_bench.elf"
+        }
+      }
+    },
+    "hwinfo-sysinfo": {
+      "variants": {
+        "default": {
+          "display_name": "HWInfo Sysinfo",
+          "source_repo": "https://github.com/drakmor/ps5-hwinfo",
+          "author": "drakmor",
+          "author_url": "https://github.com/drakmor",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "separate tool from hwinfo-bench, shared prefix only",
+          "asset_pattern": "hwinfo_sysinfo.elf"
+        }
+      }
+    },
+    "JailbreakStore": {
+      "variants": {
+        "default": {
+          "display_name": "JailbreakStore",
+          "source_repo": "https://github.com/notmaj0r/JailbreakStore",
+          "author": "notmaj0r",
+          "author_url": "https://github.com/notmaj0r",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "kstuff-lite": {
+      "variants": {
+        "EchoStretch": {
+          "display_name": "kstuff-lite (EchoStretch)",
+          "source_repo": "https://github.com/EchoStretch/kstuff-lite",
+          "author": "EchoStretch",
+          "author_url": "https://github.com/EchoStretch",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "kstuff": {
+      "variants": {
+        "default": {
+          "display_name": "kstuff",
+          "source_repo": "unset -- not yet confirmed",
+          "author": "unset",
+          "author_url": null,
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Vanilla/original kstuff build referenced by kstuff_v1.09.elf -- source not confirmed."
+        }
+      }
+    },
+    "onionHEN": {
+      "variants": {
+        "default": {
+          "display_name": "onionHEN",
+          "source_repo": "https://github.com/aydencharles/onionHEN",
+          "author": "aydencharles",
+          "author_url": "https://github.com/aydencharles",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "PIZZA-HEN": {
+      "variants": {
+        "default": {
+          "display_name": "PIZZA-HEN",
+          "source_repo": "https://github.com/Michele-M-Media/PIZZA-HEN",
+          "author": "Michele-M-Media",
+          "author_url": "https://github.com/Michele-M-Media",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "unset -- fill in from release notes"
+        }
+      }
+    },
+    "poords4-rc": {
+      "variants": {
+        "default": {
+          "display_name": "PoorDS4 (rc38)",
+          "source_repo": "https://github.com/ItsBlurf/PoorDS4",
+          "author": "ItsBlurf",
+          "author_url": "https://github.com/ItsBlurf",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "beta",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md"
+        }
+      }
+    },
+    "poords4-status": {
+      "variants": {
+        "default": {
+          "display_name": "PoorDS4 (status)",
+          "source_repo": "https://github.com/ItsBlurf/PoorDS4",
+          "author": "ItsBlurf",
+          "author_url": "https://github.com/ItsBlurf",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "beta",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md"
+        }
+      }
+    },
+    "poords4-stop": {
+      "variants": {
+        "default": {
+          "display_name": "PoorDS4 (stop)",
+          "source_repo": "https://github.com/ItsBlurf/PoorDS4",
+          "author": "ItsBlurf",
+          "author_url": "https://github.com/ItsBlurf",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "beta",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md"
+        }
+      }
+    },
+    "ProsperoMgr": {
+      "variants": {
+        "default": {
+          "display_name": "ProsperoMgr",
+          "source_repo": "https://github.com/notmaj0r/ProsperoMgr",
+          "author": "notmaj0r",
+          "author_url": "https://github.com/notmaj0r",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "All-in-one PS5 manager -- files, transfers, PKG installer, save backups, payload autoloader."
+        }
+      }
+    },
+    "ps5-payload-manager": {
+      "variants": {
+        "default": {
+          "display_name": "PS5 Payload Manager",
+          "source_repo": "https://github.com/itsPLK/ps5-payload-manager",
+          "author": "itsPLK",
+          "author_url": "https://github.com/itsPLK",
+          "backup_url": null,
+          "category": "System Utility",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "This is pldmgr itself -- the tool our manifest schema targets compatibility with."
+        }
+      }
+    },
+    "ps5-pkg-manager": {
+      "variants": {
+        "default": {
+          "display_name": "PS5 PKG Manager (itsPLK)",
+          "source_repo": "https://github.com/itsPLK/ps5-pkg-manager",
+          "author": "itsPLK",
+          "author_url": "https://github.com/itsPLK",
+          "backup_url": null,
+          "category": "File Management",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Console-side PKG browser and installer (pkgmgr.elf). Scans USB and SMB shares for PKG files and installs them directly on the PS5. GPL-3.0."
+        }
+      }
+    },
+    "ps5-self-decrypter-full-system": {
+      "variants": {
+        "default": {
+          "display_name": "Self Decrypter: Full System",
+          "source_repo": "https://github.com/idlesauce/PS5-SELF-Decrypter",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-decrypter-full-system.elf"
+        }
+      }
+    },
+    "ps5-self-decrypter-game": {
+      "variants": {
+        "default": {
+          "display_name": "Self Decrypter: Game",
+          "source_repo": "https://github.com/idlesauce/PS5-SELF-Decrypter",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-decrypter-game.elf"
+        }
+      }
+    },
+    "ps5-self-decrypter-shellcore": {
+      "variants": {
+        "default": {
+          "display_name": "Self Decrypter: Shellcore",
+          "source_repo": "https://github.com/idlesauce/PS5-SELF-Decrypter",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-decrypter-shellcore.elf"
+        }
+      }
+    },
+    "ps5-self-decrypter-system-common-lib": {
+      "variants": {
+        "default": {
+          "display_name": "Self Decrypter: System Common Lib",
+          "source_repo": "https://github.com/idlesauce/PS5-SELF-Decrypter",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-decrypter-system-common-lib.elf"
+        }
+      }
+    },
+    "ps5-self-pager-full-system": {
+      "variants": {
+        "default": {
+          "display_name": "Self Pager: Full System",
+          "source_repo": "https://github.com/idlesauce/ps5-self-pager",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-pager-full-system.elf"
+        }
+      }
+    },
+    "ps5-self-pager-game": {
+      "variants": {
+        "default": {
+          "display_name": "Self Pager: Game",
+          "source_repo": "https://github.com/idlesauce/ps5-self-pager",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-pager-game.elf"
+        }
+      }
+    },
+    "ps5-self-pager-shellcore": {
+      "variants": {
+        "default": {
+          "display_name": "Self Pager: Shellcore",
+          "source_repo": "https://github.com/idlesauce/ps5-self-pager",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-pager-shellcore.elf"
+        }
+      }
+    },
+    "ps5-self-pager-system-common-lib": {
+      "variants": {
+        "default": {
+          "display_name": "Self Pager: System Common Lib",
+          "source_repo": "https://github.com/idlesauce/ps5-self-pager",
+          "author": "idlesauce",
+          "author_url": "https://github.com/idlesauce",
+          "backup_url": null,
+          "category": "Debug & SDK",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "sibling tool -- see docs/rename-map.md",
+          "asset_pattern": "ps5-self-pager-system-common-lib.elf"
+        }
+      }
+    },
+    "ps5-webkit-autoloader": {
+      "variants": {
+        "default": {
+          "display_name": "PS5 Webkit Autoloader",
+          "source_repo": "https://github.com/itsPLK/ps5-webkit-autoloader",
+          "author": "itsPLK",
+          "author_url": "https://github.com/itsPLK",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Unified exploit autoloader -- umtx2 (FW 1.00-5.50), slopkit (9.00-12.00), p2jb (12.02-12.70)."
+        }
+      }
+    },
+    "ps5library-agent": {
+      "variants": {
+        "default": {
+          "display_name": "PS5Library Agent (rdiol12)",
+          "source_repo": "https://github.com/rdiol12/PS5Library",
+          "author": "rdiol12",
+          "author_url": "https://github.com/rdiol12",
+          "backup_url": null,
+          "category": "File Management",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Console-side agent ELF for the PS5Library native storefront. Pairs with PS5Library.pkg. Provides the on-console backend that the storefront UI talks to. GPL-3.0."
+        }
+      }
+    },
+    "ShadowMountPlus": {
+      "variants": {
+        "Alpha": {
+          "display_name": "ShadowMountPlus (Alpha)",
+          "source_repo": "https://github.com/drakmor/ShadowMountPlus",
+          "author": "drakmor",
+          "author_url": "https://github.com/drakmor",
+          "backup_url": null,
+          "category": "Game Tools",
+          "channel": "alpha",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Updates every few days. Normal 3-version hosted retention applies."
+        },
+        "Beta": {
+          "display_name": "ShadowMountPlus (Beta)",
+          "source_repo": "https://github.com/drakmor/ShadowMountPlus",
+          "author": "drakmor",
+          "author_url": "https://github.com/drakmor",
+          "backup_url": null,
+          "category": "Game Tools",
+          "channel": "beta",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": true,
+          "note": "Slower-moving, more-tested track. Always kept regardless of retention count."
+        }
+      }
+    },
+    "webkit-autoloader": {
+      "variants": {
+        "host": {
+          "display_name": "ps5-webkit-autoloader (PC host)",
+          "source_repo": "https://github.com/itsPLK/ps5-webkit-autoloader",
+          "author": "itsPLK",
+          "author_url": "https://github.com/itsPLK",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "beta",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Unified exploit autoloader: umtx2 (FW 1.00-5.50), slopkit (9.00-12.00), p2jb (12.02-12.70). Installs a homescreen app for offline autoloading. This variant is the PC-side host companion (.py/.exe), not a PS5 payload."
+        },
+        "installer": {
+          "display_name": "ps5-webkit-autoloader (installer)",
+          "source_repo": "https://github.com/itsPLK/ps5-webkit-autoloader",
+          "author": "itsPLK",
+          "author_url": "https://github.com/itsPLK",
+          "backup_url": null,
+          "category": "Kernel",
+          "channel": "beta",
+          "fw_min": null,
+          "fw_max": null,
+          "port": null,
+          "protected_fallback": false,
+          "note": "Unified exploit autoloader: umtx2 (FW 1.00-5.50), slopkit (9.00-12.00), p2jb (12.02-12.70). Installs a homescreen app for offline autoloading."
+        }
+      }
+    },
+    "websrv": {
+      "variants": {
+        "default": {
+          "display_name": "websrv",
+          "source_repo": "https://github.com/ps5-payload-dev/websrv",
+          "author": "ps5-payload-dev",
+          "author_url": "https://github.com/ps5-payload-dev",
+          "backup_url": null,
+          "category": "Network",
+          "channel": "stable",
+          "fw_min": null,
+          "fw_max": null,
+          "port": 8080,
+          "protected_fallback": false,
+          "note": "Confirm websrv_v0.34.elf and webSRV-ps5_v0.34.elf via dedupe before keeping both -- likely identical."
+        }
+      }
+    },
+    "wk-autoloader": {
+      "variants": {
+        "default": {
+          "display_name": "WK-AutoLoader (X-F1REBALL-X)",
+          "source_repo": "https://github.com/X-F1REBALL-X/WK-AutoLoader",
+          "author": "X-F1REBALL-X",
+          "author_url": "https://github.com/X-F1REBALL-X",
+          "backup_url": null,
+          "category": "Network",
+          "channel": "stable",
+          "fw_min": "1.00",
+          "fw_max": "12.70",
+          "port": 1022,
+          "protected_fallback": false,
+          "note": "WebKit-based jailbreak loader UI on port 1022. Supports FW 1.xx-5.xx, 7.00-12.00, 12.02-12.70. installer.elf. GPL-3.0."
+        }
+      }
+    }
+  }
+}
