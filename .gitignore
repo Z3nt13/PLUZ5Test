@@ -1,0 +1,22 @@
+# Secrets — never commit
+.env
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+
+# Temp / backup artifacts
+*.tmp
+*.bak
+_backups/
+PLUZ-*_BACKUP_*.zip
+pluz_extract_*/
+pluz_backup_tmp_*/
+
+# OS cruft
+.DS_Store
+Thumbs.db

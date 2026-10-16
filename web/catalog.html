@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PLUZ5-Cust — Catalog</title>
+<style>
+:root {
+  --bg:#000; --surface:#050b08; --card:#081209; --border:#0e2016;
+  --text:#e2e8f0; --muted:#6b8070; --accent:#00e699; --sub:#00f0ff;
+  --danger:#ff6b6b; --ok:#4ade80; --warn:#facc15;
+  --radius:8px; --sidebar:200px;
+}
+[data-theme="cyberpunk"] {
+  --bg:#0d0221; --surface:#190a38; --card:#12062b; --border:#2e0f60;
+  --accent:#ff0055; --sub:#00f0ff; --muted:#6040a0;
+}
+[data-theme="matrix"] {
+  --bg:#000; --surface:#001100; --card:#000800; --border:#003300;
+  --accent:#00ff00; --sub:#33ff33; --muted:#006600;
+}
+[data-theme="jade-soft"] {
+  --bg:#0a0f0d; --surface:#101a14; --card:#141f18; --border:#1a3022;
+  --accent:#00e699; --sub:#00c9a7; --muted:#4a7060;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",sans-serif;
+  min-height:100vh;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom,0);}
+/* ── header ── */
+header{background:var(--surface);border-bottom:1px solid var(--border);
+  padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:100;}
+.logo{font-size:1.2rem;font-weight:700;color:var(--accent);letter-spacing:.05em;white-space:nowrap;}
+.logo span{color:var(--sub);}
+.search-wrap{flex:1;min-width:180px;max-width:440px;}
+.search-wrap input{width:100%;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);color:var(--text);padding:7px 12px;font-size:.88rem;outline:none;}
+.search-wrap input:focus{border-color:var(--accent);}
+.hdr-right{display:flex;gap:8px;align-items:center;margin-left:auto;}
+select,button{background:var(--card);border:1px solid var(--border);color:var(--text);
+  border-radius:var(--radius);padding:6px 10px;font-size:.82rem;cursor:pointer;outline:none;}
+select:focus,button:focus{border-color:var(--accent);}
+button.active,button.pill.active{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600;}
+/* ── tabs ── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--surface);padding:0 16px;}
+.tab{padding:10px 16px;cursor:pointer;font-size:.88rem;color:var(--muted);border-bottom:2px solid transparent;
+  transition:color .15s,border-color .15s;white-space:nowrap;}
+.tab.active{color:var(--accent);border-color:var(--accent);}
+/* ── layout ── */
+.layout{display:flex;flex:1;min-height:0;}
+.sidebar{width:var(--sidebar);flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);
+  padding:14px 10px;overflow-y:auto;}
+.sidebar h3{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding:0 4px;}
+.sidebar-section{margin-bottom:18px;}
+.pill{display:block;width:100%;text-align:left;padding:5px 8px;border-radius:6px;
+  font-size:.82rem;background:none;border:none;color:var(--muted);cursor:pointer;}
+.pill:hover{color:var(--text);background:var(--card);}
+.pill.active{color:var(--accent);background:var(--card);border:1px solid var(--border);}
+.pill .count{float:right;font-size:.72rem;color:var(--muted);}
+.pill.active .count{color:var(--accent);}
+/* ── main panel ── */
+.main{flex:1;overflow-y:auto;padding:16px;}
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.toolbar .info{color:var(--muted);font-size:.82rem;margin-right:auto;}
+.view-btns{display:flex;gap:4px;}
+.view-btns button{padding:5px 10px;font-size:.8rem;}
+/* ── tiles ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;cursor:pointer;transition:border-color .15s,transform .1s;}
+.tile:hover{border-color:var(--accent);transform:translateY(-1px);}
+.tile-icon{width:44px;height:44px;border-radius:6px;background:var(--surface);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:10px;
+  border:1px solid var(--border);}
+.tile-name{font-size:.88rem;font-weight:600;margin-bottom:4px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.tile-meta{font-size:.76rem;color:var(--muted);line-height:1.4;}
+.tile-ver{color:var(--sub);font-size:.76rem;margin-top:4px;}
+.badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:.68rem;font-weight:600;margin-top:4px;}
+.badge-elf{background:#0e2233;color:var(--sub);}
+.badge-pkg{background:#1a1033;color:#c084fc;}
+.badge-hw{background:#102a3a;color:#6cc4ff;}
+.badge-ffpfsc{background:#1a2500;color:var(--ok);}
+.badge-ps4{background:#2a1000;color:var(--warn);}
+/* ── list view ── */
+.list-table{width:100%;border-collapse:collapse;font-size:.85rem;}
+.list-table th{text-align:left;color:var(--muted);font-weight:600;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.08em;padding:6px 10px;
+  border-bottom:1px solid var(--border);}
+.list-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.list-table tr:hover td{background:var(--card);}
+.list-table tr{cursor:pointer;}
+.list-table .name-cell{font-weight:600;}
+.list-table .muted{color:var(--muted);}
+/* ── detail panel ── */
+.detail-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;
+  align-items:flex-end;justify-content:center;padding:0;}
+.detail-overlay.open{display:flex;}
+.detail-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius) var(--radius) 0 0;
+  width:100%;max-width:680px;max-height:90vh;overflow-y:auto;padding:20px;}
+.detail-panel h2{font-size:1.1rem;color:var(--accent);margin-bottom:6px;}
+.detail-panel .dp-meta{color:var(--muted);font-size:.82rem;margin-bottom:14px;}
+.dp-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.dp-label{font-size:.78rem;color:var(--muted);width:110px;flex-shrink:0;}
+.dp-val{font-size:.82rem;word-break:break-all;}
+.dp-val a{color:var(--sub);text-decoration:none;}
+.dp-val a:hover{text-decoration:underline;}
+.dp-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.dp-actions a,button.dl-btn{padding:9px 18px;border-radius:var(--radius);font-size:.88rem;
+  font-weight:600;text-decoration:none;display:inline-block;cursor:pointer;}
+.dl-btn-primary{background:linear-gradient(135deg,var(--accent),var(--sub));color:#000;border:none;}
+.dl-btn-secondary{background:var(--card);border:1px solid var(--border);color:var(--text);}
+.close-btn{float:right;background:none;border:none;color:var(--muted);font-size:1.4rem;
+  cursor:pointer;line-height:1;padding:0 4px;}
+.close-btn:hover{color:var(--text);}
+/* ── states ── */
+.empty{text-align:center;padding:60px 20px;color:var(--muted);}
+.empty .icon{font-size:3rem;margin-bottom:12px;}
+.loading{text-align:center;padding:40px;color:var(--muted);}
+.err-bar{background:#2a0a0a;border:1px solid #5a2020;color:var(--danger);border-radius:var(--radius);
+  padding:10px 14px;margin-bottom:14px;font-size:.85rem;}
+/* ── source config modal ── */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;}
+.modal.open{display:flex;}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;width:90%;max-width:500px;}
+.modal-box h3{color:var(--accent);margin-bottom:12px;}
+.modal-box label{font-size:.82rem;color:var(--muted);display:block;margin:10px 0 4px;}
+.modal-box input{width:100%;background:var(--card);border:1px solid var(--border);
+  color:var(--text);padding:8px 10px;border-radius:6px;font-size:.88rem;}
+.modal-box .btns{display:flex;gap:8px;margin-top:16px;}
+.btn-accent{background:linear-gradient(135deg,var(--accent),var(--sub));color:#000;border:none;
+  padding:9px 16px;border-radius:var(--radius);font-weight:600;cursor:pointer;font-size:.88rem;}
+@media(max-width:600px){
+  .sidebar{display:none;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">PLUZ<span>5-Cust</span></div><a href="builder.html" style="color:var(--sub);font-size:.85rem;text-decoration:none">Builder</a>
+  <div class="search-wrap">
+    <input type="search" id="search" placeholder="Search payloads…" autocomplete="off">
+  </div>
+  <div class="hdr-right">
+    <select id="theme-sel" title="Theme">
+      <option value="">Jade OLED</option>
+      <option value="jade-soft">Jade Soft</option>
+      <option value="cyberpunk">Cyberpunk</option>
+      <option value="matrix">Matrix</option>
+    </select>
+    <button id="src-btn" title="Configure manifest source">⚙ Source</button>
+  </div>
+</header>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-tab="payloads">Payloads <span id="tab-count-payloads"></span></div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <h3>Platform</h3>
+      <button class="pill active" data-filter="platform" data-val="">All</button>
+      <button class="pill" data-filter="platform" data-val="ps5">PS5</button>
+      <button class="pill" data-filter="platform" data-val="ps4">PS4</button>
+      <button class="pill" data-filter="platform" data-val="ps4/ps5">PS4+PS5</button>
+    </div>
+    <div class="sidebar-section">
+      <h3>Hardware</h3>
+      <button class="pill active" data-filter="hw" data-val="">All</button>
+      <button class="pill" data-filter="hw" data-val="P5">P5 (PS5/slim)</button>
+      <button class="pill" data-filter="hw" data-val="P5P">P5P (Pro)</button>
+      <button class="pill" data-filter="hw" data-val="P5U">P5U (both)</button>
+    </div>
+    <div class="sidebar-section">
+      <h3>Category</h3>
+      <div id="cat-filters"></div>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <div id="err-area"></div>
+    <div class="toolbar">
+      <div class="info" id="result-info"></div>
+      <div class="view-btns">
+        <button id="view-tiles" class="active" title="Tile view">⊞</button>
+        <button id="view-list" title="List view">≡</button>
+      </div>
+    </div>
+    <div id="content"><div class="loading">Loading manifests…</div></div>
+  </main>
+</div>
+
+<!-- detail panel -->
+<div class="detail-overlay" id="detail-overlay">
+  <div class="detail-panel" id="detail-panel">
+    <button class="close-btn" id="detail-close">✕</button>
+    <h2 id="dp-name"></h2>
+    <div class="dp-meta" id="dp-meta"></div>
+    <div id="dp-rows"></div>
+    <div class="dp-actions" id="dp-actions"></div>
+  </div>
+</div>
+
+<!-- source config modal -->
+<div class="modal" id="src-modal">
+  <div class="modal-box">
+    <h3>Manifest Source</h3>
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:8px;">
+      PLUZ5 catalog fetches its data from the manifest JSON files. On GitHub Pages this works automatically
+      (same origin). To use a local dev server or a custom mirror, set the base URL below.
+    </p>
+    <label for="base-url-input">Base URL (no trailing slash)</label>
+    <input type="url" id="base-url-input" placeholder="https://YOUR-NAME.github.io/YOUR-REPO">
+    <div style="font-size:.78rem;color:var(--muted);margin-top:6px;">
+      Leave blank to use relative paths (correct on GitHub Pages).
+    </div>
+    <div class="btns">
+      <button class="btn-accent" id="src-apply">Apply &amp; Reload</button>
+      <button onclick="document.getElementById('src-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+"use strict";
+
+// ── config ──────────────────────────────────────────────────────────
+var BASE = (function () {
+  try { return localStorage.getItem("pluz5_base") || ""; } catch(e) { return ""; }
+})();
+
+var MANIFESTS = {
+  payloads: [
+    "manifests/PLUZ-ps5-Hosted.json",
+    "manifests/PLUZ-ps5-Source.json"
+  ]
+};
+
+// ── state ────────────────────────────────────────────────────────────
+var state = {
+  tab: "payloads",
+  view: "tiles",
+  search: "",
+  filterCat: "",
+  filterPlatform: "",
+  filterHw: "",
+  data: { payloads: [] },
+  loaded: { payloads: false }
+};
+
+// ── helpers ──────────────────────────────────────────────────────────
+function url(path) {
+  return BASE ? BASE.replace(/\/$/, "") + "/" + path : "../" + path;
+}
+
+function escHtml(s) {
+  var d = document.createElement("div");
+  d.textContent = s == null ? "" : String(s);
+  return d.innerHTML;
+}
+
+function iconFor(entry) {
+  var t = (entry._type || "");
+  if (t === "pkg") return "📦";
+  if (t === "ffpfsc") return "🗜";
+  var cat = (entry.category || "").toLowerCase();
+  if (cat.includes("kernel")) return "⚡";
+  if (cat.includes("network") || cat.includes("ftp")) return "📡";
+  if (cat.includes("file")) return "📂";
+  if (cat.includes("game")) return "🎮";
+  if (cat.includes("media")) return "🎬";
+  if (cat.includes("linux")) return "🐧";
+  if (cat.includes("debug") || cat.includes("sdk")) return "🔧";
+  if (cat.includes("spoof") || cat.includes("activation")) return "🛡";
+  return "🔩";
+}
+
+function fwLabel(entry) {
+  var mn = entry.fw_min, mx = entry.fw_max;
+  if (mn || mx) return "FW " + (mn || "?") + "–" + (mx || "?");
+  return "";
+}
+
+function platformBadge(p) {
+  if (!p || p === "ps5") return "";
+  return '<span class="badge badge-ps4">' + escHtml(p.toUpperCase()) + '</span>';
+}
+
+function hwBadge(h) {
+  if (!h) return "";
+  return '<span class="badge badge-hw">' + escHtml(h) + '</span>';
+}
+
+function typeBadge(t) {
+  if (t === "pkg") return '<span class="badge badge-pkg">PKG</span>';
+  if (t === "ffpfsc") return '<span class="badge badge-ffpfsc">ffpfsc</span>';
+  return '<span class="badge badge-elf">ELF</span>';
+}
+
+function $ (id) { return document.getElementById(id); }
+
+// ── fetch & normalise ────────────────────────────────────────────────
+function loadManifest(tab) {
+  var paths = MANIFESTS[tab];
+  // try each path in order, use first that succeeds; deduplicate by filename
+  var seen = new Set(), combined = [];
+
+  function tryNext(i) {
+    if (i >= paths.length) {
+      state.data[tab] = combined;
+      state.loaded[tab] = true;
+      if (state.tab === tab) render();
+      updateTabCounts();
+      return;
+    }
+    fetch(url(paths[i]))
+      .then(function(r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function(json) {
+        var items = json.payloads || json.packages || json.entries || [];
+        items.forEach(function(item) {
+          if (!seen.has(item.filename)) {
+            seen.add(item.filename);
+            item._type = tab === "pkgs" ? "pkg" : (tab === "ffpfsc" ? "ffpfsc" : "elf");
+            if (!item.platform) item.platform = "ps5";
+            combined.push(item);
+          }
+        });
+        tryNext(i + 1);
+      })
+      .catch(function() {
+        tryNext(i + 1);
+      });
+  }
+  tryNext(0);
+}
+
+function updateTabCounts() {
+  ["payloads"].forEach(function(t) {
+    var el = $("tab-count-" + t);
+    if (el && state.loaded[t]) el.textContent = "(" + state.data[t].length + ")";
+  });
+}
+
+// ── filtering ────────────────────────────────────────────────────────
+function getVisible() {
+  var items = state.data[state.tab] || [];
+  var q = state.search.toLowerCase().trim();
+  var cat = state.filterCat;
+  var plat = state.filterPlatform;
+
+  return items.filter(function(e) {
+    if (cat && e.category !== cat) return false;
+    if (state.filterHw && e.hw_target !== state.filterHw) return false;
+    if (plat) {
+      var ep = (e.platform || "ps5").toLowerCase();
+      if (ep !== plat.toLowerCase()) return false;
+    }
+    if (q) {
+      var hay = ((e.name||"")+" "+(e.category||"")+" "+(e.author||"")+" "+(e.filename||"")+" "+(e.description||"")).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+// ── sidebar category pills ───────────────────────────────────────────
+function buildCatFilters() {
+  var items = state.data[state.tab] || [];
+  var counts = {};
+  items.forEach(function(e) {
+    var c = e.category || "Unknown";
+    counts[c] = (counts[c] || 0) + 1;
+  });
+  var box = $("cat-filters");
+  box.innerHTML = "";
+  var allBtn = document.createElement("button");
+  allBtn.className = "pill" + (state.filterCat === "" ? " active" : "");
+  allBtn.setAttribute("data-filter","cat");
+  allBtn.setAttribute("data-val","");
+  allBtn.innerHTML = 'All <span class="count">' + items.length + "</span>";
+  allBtn.onclick = function() { state.filterCat = ""; buildCatFilters(); render(); };
+  box.appendChild(allBtn);
+
+  Object.keys(counts).sort().forEach(function(cat) {
+    var btn = document.createElement("button");
+    btn.className = "pill" + (state.filterCat === cat ? " active" : "");
+    btn.innerHTML = escHtml(cat) + ' <span class="count">' + counts[cat] + "</span>";
+    btn.onclick = function() { state.filterCat = cat; buildCatFilters(); render(); };
+    box.appendChild(btn);
+  });
+}
+
+// ── render ───────────────────────────────────────────────────────────
+function render() {
+  if (!state.loaded[state.tab]) {
+    $("content").innerHTML = '<div class="loading">Loading…</div>';
+    return;
+  }
+  var visible = getVisible();
+  $("result-info").textContent = visible.length + " of " + (state.data[state.tab]||[]).length + " entries";
+  buildCatFilters();
+
+  if (!visible.length) {
+    $("content").innerHTML = '<div class="empty"><div class="icon">🔍</div>No results match your filter.</div>';
+    return;
+  }
+
+  if (state.view === "tiles") {
+    var html = '<div class="grid">';
+    visible.forEach(function(e, i) {
+      html += '<div class="tile" data-idx="' + i + '">'
+        + '<div class="tile-icon">' + iconFor(e) + '</div>'
+        + '<div class="tile-name" title="' + escHtml(e.name) + '">' + escHtml(e.name) + '</div>'
+        + '<div class="tile-meta">' + escHtml(e.category || "Unknown") + '</div>'
+        + '<div class="tile-meta">' + escHtml(e.author || "") + '</div>'
+        + '<div class="tile-ver">' + escHtml(e.version ? "v" + e.version : "") + " " + escHtml(fwLabel(e)) + '</div>'
+        + typeBadge(e._type) + platformBadge(e.platform) + hwBadge(e.hw_target)
+        + '</div>';
+    });
+    html += '</div>';
+    $("content").innerHTML = html;
+    $("content").querySelectorAll(".tile").forEach(function(tile) {
+      tile.addEventListener("click", function() {
+        openDetail(visible[+tile.dataset.idx]);
+      });
+    });
+  } else {
+    var html = '<table class="list-table"><thead><tr>'
+      + '<th></th><th>Name</th><th>Version</th><th>FW</th><th>Category</th><th>Author</th>'
+      + '</tr></thead><tbody>';
+    visible.forEach(function(e, i) {
+      html += '<tr data-idx="' + i + '">'
+        + '<td>' + iconFor(e) + '</td>'
+        + '<td class="name-cell">' + escHtml(e.name) + '<br>'
+          + typeBadge(e._type) + platformBadge(e.platform) + hwBadge(e.hw_target) + '</td>'
+        + '<td class="muted">' + escHtml(e.version ? "v"+e.version : "—") + '</td>'
+        + '<td class="muted">' + escHtml(fwLabel(e) || "—") + '</td>'
+        + '<td class="muted">' + escHtml(e.category || "—") + '</td>'
+        + '<td class="muted">' + escHtml(e.author || "—") + '</td>'
+        + '</tr>';
+    });
+    html += '</tbody></table>';
+    $("content").innerHTML = html;
+    $("content").querySelectorAll("tr[data-idx]").forEach(function(row) {
+      row.addEventListener("click", function() {
+        openDetail(visible[+row.dataset.idx]);
+      });
+    });
+  }
+}
+
+// ── detail panel ─────────────────────────────────────────────────────
+function openDetail(e) {
+  $("dp-name").textContent = e.name || e.filename;
+  $("dp-meta").textContent = (e.category || "") + (e.author ? " · " + e.author : "");
+  var rows = [
+    ["Version", e.version ? "v" + e.version : "—"],
+    ["Filename", e.filename],
+    ["FW", fwLabel(e) || "—"],
+    ["Platform", (e.platform || "ps5").toUpperCase()],
+    ["Hardware", e.hw_target ? e.hw_target + " (" + ({P5:"PS5/slim",P5P:"PS5 Pro",P5U:"PS5 + Pro"})[e.hw_target] + ")" : "not stated"],
+    ["Type", (e._type || "elf").toUpperCase() + (e.ffpfsc_type ? " / " + e.ffpfsc_type : "") + (e.pkg_type ? " / " + e.pkg_type : "")],
+    ["SHA256", e.checksum ? e.checksum.slice(0,16)+"…" : "—"],
+    ["Source", e.author_url ? '<a href="' + escHtml(e.author_url) + '" target="_blank" rel="noopener">' + escHtml(e.author_url) + '</a>' : "—"],
+    ["Notes", e.description || e.note || "—"]
+  ];
+  if (e.title_id) rows.push(["Title ID", e.title_id]);
+  if (e.required_system_version) rows.push(["Min system ver", e.required_system_version]);
+  if (e.retention) rows.push(["Retention", e.retention]);
+
+  $("dp-rows").innerHTML = rows.map(function(r) {
+    return '<div class="dp-row"><div class="dp-label">' + escHtml(r[0]) + '</div>'
+      + '<div class="dp-val">' + r[1] + '</div></div>';
+  }).join("");
+
+  var acts = "";
+  if (e.url) acts += '<a class="dl-btn dl-btn-primary" href="' + escHtml(e.url) + '" download target="_blank" rel="noopener">⬇ Download</a>';
+  if (e.backup_url) acts += ' <a class="dl-btn dl-btn-secondary" href="' + escHtml(e.backup_url) + '" target="_blank" rel="noopener">🔗 Mirror</a>';
+  if (e.author_url) acts += ' <a class="dl-btn dl-btn-secondary" href="' + escHtml(e.author_url) + '" target="_blank" rel="noopener">↗ Source repo</a>';
+  $("dp-actions").innerHTML = acts;
+  $("detail-overlay").classList.add("open");
+}
+
+$("detail-close").onclick = function() { $("detail-overlay").classList.remove("open"); };
+$("detail-overlay").onclick = function(e) { if (e.target === this) this.classList.remove("open"); };
+
+// ── tabs ─────────────────────────────────────────────────────────────
+document.querySelectorAll(".tab").forEach(function(tab) {
+  tab.addEventListener("click", function() {
+    document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+    tab.classList.add("active");
+    state.tab = tab.dataset.tab;
+    state.filterCat = "";
+    render();
+    if (!state.loaded[state.tab]) loadManifest(state.tab);
+  });
+});
+
+// ── platform filter pills ─────────────────────────────────────────────
+document.querySelectorAll("[data-filter='platform']").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll("[data-filter='platform']").forEach(function(b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    state.filterPlatform = btn.dataset.val;
+    render();
+  });
+});
+
+document.querySelectorAll("[data-filter='hw']").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll("[data-filter='hw']").forEach(function(b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    state.filterHw = btn.dataset.val;
+    render();
+  });
+});
+
+// ── view toggle ───────────────────────────────────────────────────────
+$("view-tiles").onclick = function() {
+  state.view = "tiles";
+  $("view-tiles").classList.add("active");
+  $("view-list").classList.remove("active");
+  render();
+};
+$("view-list").onclick = function() {
+  state.view = "list";
+  $("view-list").classList.add("active");
+  $("view-tiles").classList.remove("active");
+  render();
+};
+
+// ── search ────────────────────────────────────────────────────────────
+var searchDebounce;
+$("search").addEventListener("input", function() {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(function() {
+    state.search = $("search").value;
+    render();
+  }, 180);
+});
+
+// ── theme ─────────────────────────────────────────────────────────────
+$("theme-sel").addEventListener("change", function() {
+  document.documentElement.dataset.theme = this.value;
+  try { localStorage.setItem("pluz5_theme", this.value); } catch(e) {}
+});
+(function() {
+  try {
+    var t = localStorage.getItem("pluz5_theme") || "";
+    document.documentElement.dataset.theme = t;
+    $("theme-sel").value = t;
+  } catch(e) {}
+})();
+
+// ── source config ─────────────────────────────────────────────────────
+$("src-btn").onclick = function() {
+  $("base-url-input").value = BASE;
+  $("src-modal").classList.add("open");
+};
+$("src-apply").onclick = function() {
+  var v = $("base-url-input").value.trim().replace(/\/$/, "");
+  try { localStorage.setItem("pluz5_base", v); } catch(e) {}
+  location.reload();
+};
+
+// ── boot ──────────────────────────────────────────────────────────────
+loadManifest("payloads");
+// pre-load others in background
+
+})();
+</script>
+</body>
+</html>

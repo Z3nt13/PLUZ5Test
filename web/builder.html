@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLUZ5-Cust — Builder</title>
+<style>
+:root{--bg:#000;--surface:#050b08;--card:#081209;--border:#0e2016;--text:#e2e8f0;--muted:#6b8070;
+  --accent:#00e699;--sub:#00f0ff;--danger:#ff6b6b;--ok:#4ade80;--warn:#facc15;--r:8px;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",sans-serif;line-height:1.4;padding-bottom:60px}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+.logo{font-weight:700;color:var(--accent);letter-spacing:.05em;font-size:1.15rem}.logo span{color:var(--sub)}
+header a{color:var(--sub);font-size:.85rem;text-decoration:none}
+main{max-width:1100px;margin:0 auto;padding:16px}
+section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:14px}
+h2{font-size:.95rem;color:var(--accent);margin-bottom:8px}
+.hint{color:var(--muted);font-size:.8rem;margin:4px 0 8px}
+textarea,input,select,button{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:var(--r);padding:7px 10px;font-size:.85rem;font-family:inherit;outline:none}
+textarea{width:100%;min-height:90px;resize:vertical;font-family:ui-monospace,Menlo,Consolas,monospace}
+input,select{width:100%}input[type=checkbox]{width:auto}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+button{cursor:pointer;width:auto}button:hover{border-color:var(--accent)}
+button.pri{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600}
+button.del{color:var(--danger)}
+button:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.grow{flex:1;min-width:160px}
+#status{font-size:.82rem;margin-top:8px;white-space:pre-wrap}
+.ok{color:var(--ok)}.err{color:var(--danger)}.warn{color:var(--warn)}
+#cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:10px}
+.card h3{font-size:.9rem;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.card h3 small{color:var(--muted);font-weight:400;word-break:break-all}
+.card .src{font-size:.75rem;color:var(--muted);word-break:break-all;margin:2px 0 6px}
+.card .src a{color:var(--sub)}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.g label{font-size:.7rem;color:var(--muted);display:block;margin-top:4px}
+.full{grid-column:1/3}
+.flag{font-size:.75rem;margin-top:6px}
+.links code{display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:6px 8px;font-size:.78rem;word-break:break-all;margin:4px 0}
+.links .lrow{display:flex;gap:8px;align-items:flex-start}.links .lrow code{flex:1}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">PLUZ5<span>-Cust</span> Builder</div>
+  <a href="catalog.html">Catalog</a>
+  <span class="hint" id="count" style="margin:0 0 0 auto"></span>
+</header>
+<main>
+
+<section>
+  <h2>1. Add repos</h2>
+  <div class="hint">One GitHub repo URL per line (or <code>owner/repo</code>). The latest release is read to pre-fill each entry. Nothing is uploaded anywhere.</div>
+  <textarea id="urls" placeholder="https://github.com/itsPLK/ps5-payload-manager&#10;ps5-payload-dev/websrv"></textarea>
+  <div class="row">
+    <button class="pri" id="addBtn">Add</button>
+    <input id="token" class="grow" type="password" placeholder="Optional GitHub token (only raises the API rate limit; kept in memory, never saved)" autocomplete="off">
+  </div>
+  <div id="status"></div>
+</section>
+
+<section>
+  <h2>2. Your registry</h2>
+  <div class="row" style="margin-top:0">
+    <input id="filter" class="grow" type="search" placeholder="Filter entries…">
+    <button id="openBtn">Open .json…</button>
+    <button id="exampleBtn">Load example list</button>
+    <button class="pri" id="dlBtn">Download payload_registry.json</button>
+    <button id="saveBtn" style="display:none">Save to opened file</button>
+    <button class="del" id="clearBtn">Clear all</button>
+    <input type="file" id="file" accept=".json,application/json" style="display:none">
+  </div>
+  <div class="hint">Then upload the downloaded file to <code>configs/</code> in your repo (replace the old one) and commit. The update workflow does the rest.</div>
+  <div id="cards" style="margin-top:10px"></div>
+</section>
+
+<section class="links">
+  <h2>3. Your links for the PS5 (pldmgr → Custom repositories)</h2>
+  <div class="row" style="margin-top:0">
+    <input id="owner" style="max-width:200px" placeholder="GitHub user">
+    <input id="repo" style="max-width:200px" placeholder="repo name">
+    <input id="branch" style="max-width:120px" value="main">
+  </div>
+  <div id="linkList"></div>
+</section>
+
+</main>
+<script>
+(function () {
+  "use strict";
+  var CATS = ["Kernel","Network","File Management","Game Tools","Media","System Utility","Debug & SDK","Linux","Activation & Spoof","Unknown"];
+  var CH = ["stable","beta","alpha"], HW = ["","P5","P5P","P5U"], PLAT = ["","ps5","ps4","ps4/ps5"];
+  var meta = { schema_version: 6, comment: "Your sources. Build/edit with web/builder.html." };
+  var rows = [];          // {id, variant, e}
+  var fileHandle = null, dirty = false;
+
+  function $(i) { return document.getElementById(i); }
+  function el(tag, props, kids) {
+    var n = document.createElement(tag);
+    Object.keys(props || {}).forEach(function (k) {
+      if (k === "text") n.textContent = props[k]; else if (k === "class") n.className = props[k];
+      else if (k === "on") Object.keys(props.on).forEach(function (ev) { n.addEventListener(ev, props.on[ev]); });
+      else n.setAttribute(k, props[k]);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+  function status(msg, kind) { var s = $("status"); s.textContent = msg; s.className = kind || ""; }
+  function setDirty(v) { dirty = v; $("count").textContent = rows.length + " entr" + (rows.length === 1 ? "y" : "ies") + (v ? " · unsaved changes" : ""); }
+
+  // ---------- registry <-> rows ----------
+  function loadRegistry(data) {
+    if (!data || typeof data !== "object" || !data.payloads || typeof data.payloads !== "object")
+      throw new Error("Not a PLUZ registry file (no top-level \"payloads\" object).");
+    meta = {};
+    Object.keys(data).forEach(function (k) { if (k !== "payloads") meta[k] = data[k]; });
+    rows = [];
+    Object.keys(data.payloads).forEach(function (id) {
+      var vs = (data.payloads[id] || {}).variants || {};
+      Object.keys(vs).forEach(function (v) { rows.push({ id: id, variant: v, e: vs[v] }); });
+    });
+    render(); setDirty(false);
+  }
+  function toRegistry() {
+    var out = {}, payloads = {};
+    Object.keys(meta).forEach(function (k) { out[k] = meta[k]; });
+    rows.slice().sort(function (a, b) { return (a.id + "/" + a.variant).toLowerCase() < (b.id + "/" + b.variant).toLowerCase() ? -1 : 1; })
+      .forEach(function (r) {
+        payloads[r.id] = payloads[r.id] || { variants: {} };
+        var e = {};
+        Object.keys(r.e).forEach(function (k) {
+          var v = r.e[k];
+          if (k[0] === "_") return;                       // UI-only keys
+          if (v === "" && ["hw_target", "platform", "asset_pattern", "tag_pattern", "fw_min", "fw_max"].indexOf(k) >= 0) return;
+          e[k] = v;
+        });
+        payloads[r.id].variants[r.variant] = e;
+      });
+    out.payloads = payloads;
+    return out;
+  }
+
+  // ---------- GitHub ----------
+  function parseRepo(line) {
+    var s = line.trim().replace(/\.git$/, "").replace(/\/+$/, "");
+    var m = s.match(/^(?:https?:\/\/github\.com\/)?([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)(?:\/.*)?$/);
+    return m ? { owner: m[1], repo: m[2] } : null;
+  }
+  function gh(path) {
+    var h = { Accept: "application/vnd.github+json" }, t = $("token").value.trim();
+    if (t) h.Authorization = "Bearer " + t;
+    return fetch("https://api.github.com/" + path, { headers: h }).then(function (r) {
+      if (r.status === 403 || r.status === 429) throw new Error("GitHub rate limit reached — wait a while or add a token");
+      if (r.status === 404) throw new Error("not found (private or misspelled?)");
+      if (!r.ok) throw new Error("GitHub answered HTTP " + r.status);
+      return r.json();
+    });
+  }
+  function generalize(name) {           // etaHEN-2.6B.bin -> etaHEN-*.bin
+    var m = name.match(/^(.*?)[-_ ]?v?[0-9][0-9A-Za-z.\-_]*(\.[A-Za-z0-9]+)$/);
+    return m ? m[1] + "-*" + m[2] : name;
+  }
+  function safeId(s) { return s.replace(/[^A-Za-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") || "payload"; }
+  function addFromRepo(p) {
+    return Promise.all([gh("repos/" + p.owner + "/" + p.repo), gh("repos/" + p.owner + "/" + p.repo + "/releases?per_page=15")])
+      .then(function (res) {
+        var repo = res[0], rels = res[1].filter(function (r) { return !r.draft; });
+        var stable = rels.filter(function (r) { return !r.prerelease; })[0];
+        var rel = stable || rels[0], channel = stable ? "stable" : "beta", flags = [];
+        if (!rel) flags.push("no releases yet — nothing will be fetched until one appears (or set tag_pattern)");
+        var assets = rel ? (rel.assets || []).map(function (a) { return a.name; }) : [];
+        var bins = assets.filter(function (n) { return /\.(elf|bin)$/i.test(n); });
+        var pattern = "";
+        if (bins.length > 1) { pattern = generalize(bins[0]); flags.push(bins.length + " .elf/.bin assets (" + bins.slice(0, 4).join(", ") + (bins.length > 4 ? ", …" : "") + ") — check asset_pattern"); }
+        else if (!bins.length && rel) flags.push("no .elf/.bin asset in the latest release (zip files are searched too)");
+        if (!stable && rel) flags.push("only pre-releases found — channel set to beta");
+        if (rows.some(function (r) { return r.e.source_repo === repo.html_url; })) return "already in the list: " + repo.name;
+        var id = safeId(repo.name), variant = "default";
+        if (rows.some(function (r) { return r.id === id && r.variant === variant; })) {
+          if (rows.some(function (r) { return r.id === id && r.variant === p.owner; })) return "already in the list: " + id;
+          variant = safeId(p.owner);
+        }
+        var e = {
+          display_name: repo.name, source_repo: repo.html_url, author: repo.owner.login, author_url: repo.owner.html_url,
+          backup_url: null, category: "Unknown", channel: channel, fw_min: null, fw_max: null, port: null,
+          protected_fallback: false, note: repo.description || ""
+        };
+        if (pattern) e.asset_pattern = pattern;
+        rows.push({ id: id, variant: variant, e: e, flags: flags });
+        return "added " + id + (variant !== "default" ? "/" + variant : "") + (flags.length ? "  (" + flags.length + " note)" : "");
+      });
+  }
+  $("addBtn").addEventListener("click", function () {
+    var lines = $("urls").value.split("\n").map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!lines.length) return status("Paste at least one repo URL.", "warn");
+    $("addBtn").disabled = true; var log = [], chain = Promise.resolve();
+    lines.forEach(function (line) {
+      chain = chain.then(function () {
+        var p = parseRepo(line);
+        if (!p) { log.push("✗ " + line + " — not a GitHub repo URL"); return; }
+        return addFromRepo(p).then(function (m) { log.push("✓ " + m); }, function (err) { log.push("✗ " + line + " — " + err.message); });
+      });
+    });
+    chain.then(function () {
+      $("addBtn").disabled = false; $("urls").value = "";
+      status(log.join("\n"), log.some(function (l) { return l[0] === "✗"; }) ? "warn" : "ok");
+      render(); setDirty(true);
+    });
+  });
+
+  // ---------- cards ----------
+  function field(r, key, label, type, opts) {
+    var wrap = el("div", { class: opts && opts.full ? "full" : "" });
+    wrap.appendChild(el("label", { text: label }));
+    var cur = r.e[key], input;
+    if (type === "select") {
+      input = el("select"); (opts.list).forEach(function (o) { input.appendChild(el("option", { value: o, text: o || "—" })); });
+      input.value = cur == null ? "" : cur;
+      if (input.value !== (cur == null ? "" : cur)) { input.appendChild(el("option", { value: cur, text: cur })); input.value = cur; }
+    } else { input = el("input", { type: type || "text" }); input.value = cur == null ? "" : cur; }
+    input.addEventListener("input", function () {
+      var v = input.value;
+      if (key === "port") v = v === "" ? null : (isNaN(+v) ? v : +v);
+      else if (key === "fw_min" || key === "fw_max" || key === "backup_url") v = v === "" ? null : v;
+      r.e[key] = v; setDirty(true);
+    });
+    wrap.appendChild(input); return wrap;
+  }
+  function render() {
+    var q = $("filter").value.trim().toLowerCase(), box = $("cards"); box.textContent = "";
+    var shown = rows.filter(function (r) { return !q || (r.id + " " + r.variant + " " + (r.e.display_name || "") + " " + (r.e.author || "")).toLowerCase().indexOf(q) >= 0; });
+    if (!shown.length) box.appendChild(el("div", { class: "hint", text: rows.length ? "No entries match the filter." : "Empty. Add repos above, open a .json, or load the example list." }));
+    shown.forEach(function (r) {
+      var src = /^https?:\/\//.test(r.e.source_repo || "") ? el("a", { href: r.e.source_repo, target: "_blank", rel: "noopener", text: r.e.source_repo }) : el("span", { text: r.e.source_repo || "no source set" });
+      var card = el("div", { class: "card" }, [
+        el("h3", {}, [el("span", { text: r.e.display_name || r.id }), el("small", { text: r.id + " / " + r.variant })]),
+        el("div", { class: "src" }, [src]),
+        el("div", { class: "g" }, [
+          field(r, "display_name", "Name", "text", { full: true }),
+          field(r, "category", "Category", "select", { list: CATS }),
+          field(r, "channel", "Channel", "select", { list: CH }),
+          field(r, "fw_min", "FW min"), field(r, "fw_max", "FW max"),
+          field(r, "hw_target", "Hardware (P5 / P5P / P5U)", "select", { list: HW }),
+          field(r, "platform", "Platform", "select", { list: PLAT }),
+          field(r, "asset_pattern", "Asset pattern (e.g. name-*.elf)", "text", { full: true }),
+          field(r, "port", "Port"),
+          field(r, "tag_pattern", "Tag pattern"),
+          field(r, "note", "Note", "text", { full: true })
+        ])
+      ]);
+      var prot = el("input", { type: "checkbox" }); prot.checked = !!r.e.protected_fallback;
+      prot.addEventListener("change", function () { r.e.protected_fallback = prot.checked; setDirty(true); });
+      card.appendChild(el("div", { class: "row" }, [
+        el("label", { class: "hint", style: "margin:0;display:flex;gap:6px;align-items:center" }, [prot, el("span", { text: "keep old builds forever" })]),
+        el("button", { class: "del", style: "margin-left:auto", text: "Remove", on: { click: function () {
+          rows = rows.filter(function (x) { return x !== r; }); render(); setDirty(true); } } })
+      ]));
+      if (r.flags && r.flags.length) card.appendChild(el("div", { class: "flag warn", text: "⚠ " + r.flags.join(" · ") }));
+      box.appendChild(card);
+    });
+    setDirty(dirty);
+  }
+  $("filter").addEventListener("input", render);
+
+  // ---------- file I/O ----------
+  function readJsonText(text) { try { loadRegistry(JSON.parse(text)); status("Loaded " + rows.length + " entries.", "ok"); } catch (e) { status("Could not load: " + e.message, "err"); } }
+  $("openBtn").addEventListener("click", function () {
+    if (window.showOpenFilePicker) {
+      window.showOpenFilePicker({ types: [{ description: "JSON", accept: { "application/json": [".json"] } }] })
+        .then(function (hs) { fileHandle = hs[0]; $("saveBtn").style.display = ""; return fileHandle.getFile(); })
+        .then(function (f) { return f.text(); }).then(readJsonText).catch(function () {});
+    } else $("file").click();
+  });
+  $("file").addEventListener("change", function () {
+    var f = $("file").files[0]; if (f) f.text().then(readJsonText); $("file").value = "";
+  });
+  $("exampleBtn").addEventListener("click", function () {
+    fetch("../examples/example-full.json").then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(readJsonText).catch(function () { status("Could not load ../examples/example-full.json (open this page from your GitHub Pages site, or use Open .json).", "warn"); });
+  });
+  function jsonText() { return JSON.stringify(toRegistry(), null, 2) + "\n"; }
+  $("dlBtn").addEventListener("click", function () {
+    var a = el("a", { href: URL.createObjectURL(new Blob([jsonText()], { type: "application/json" })), download: "payload_registry.json" });
+    document.body.appendChild(a); a.click(); a.remove(); setDirty(false);
+    status("Downloaded. Upload it to configs/ in your repo (replace payload_registry.json).", "ok");
+  });
+  $("saveBtn").addEventListener("click", function () {
+    if (!fileHandle) return;
+    fileHandle.createWritable().then(function (w) { return w.write(jsonText()).then(function () { return w.close(); }); })
+      .then(function () { setDirty(false); status("Saved to the opened file.", "ok"); })
+      .catch(function (e) { status("Save failed: " + e.message, "err"); });
+  });
+  $("clearBtn").addEventListener("click", function () {
+    if (rows.length && !confirm("Remove all " + rows.length + " entries from this page? (Your repo is not touched.)")) return;
+    rows = []; render(); setDirty(true);
+  });
+  window.addEventListener("beforeunload", function (e) { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+  // ---------- PS5 links ----------
+  function links() {
+    var o = $("owner").value.trim(), r = $("repo").value.trim(), b = $("branch").value.trim() || "main", box = $("linkList");
+    box.textContent = "";
+    if (!o || !r) { box.appendChild(el("div", { class: "hint", text: "Enter your GitHub user and repo name." })); return; }
+    var raw = "https://raw.githubusercontent.com/" + encodeURIComponent(o) + "/" + encodeURIComponent(r) + "/" + encodeURIComponent(b) + "/manifests/";
+    [["Latest build of each payload (use this one)", raw + "PLUZ-ps5-Source.json"],
+     ["Up to 3 builds per payload (only if your repo runs in hosted mode)", raw + "PLUZ-ps5-Hosted.json"],
+     ["Catalog page", "https://" + o.toLowerCase() + ".github.io/" + r + "/web/catalog.html"]].forEach(function (l) {
+      box.appendChild(el("div", { class: "hint", text: l[0] }));
+      box.appendChild(el("div", { class: "lrow" }, [el("code", { text: l[1] }),
+        el("button", { text: "Copy", on: { click: function (ev) {
+          var btn = ev.target; (navigator.clipboard ? navigator.clipboard.writeText(l[1]) : Promise.reject()).then(function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1200); }, function () { btn.textContent = "Select + copy"; }); } } })]));
+    });
+  }
+  ["owner", "repo", "branch"].forEach(function (i) { $(i).addEventListener("input", links); });
+  var hm = location.hostname.match(/^([^.]+)\.github\.io$/i), seg = location.pathname.split("/").filter(Boolean)[0];
+  if (hm) { $("owner").value = hm[1]; if (seg && !/\.html$/.test(seg)) $("repo").value = seg; }
+  links(); render();
+})();
+</script>
+</body>
+</html>

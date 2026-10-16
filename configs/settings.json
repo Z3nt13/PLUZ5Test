@@ -1,0 +1,44 @@
+{
+  "schema_version": 6,
+  "project": "PLUZ5-Cust",
+  "mode": "source",
+  "mode_note": "source = manifests link to the upstream release assets, nothing is stored in this repo (default). hosted = binaries are copied into payloads/ and served from this repo (up to 3 builds). Override with PLUZ_MODE in .env.",
+  "paths": {
+    "payloads": "payloads",
+    "manifests": "manifests",
+    "split_manifests": "manifests/split",
+    "logs": "logs",
+    "backups": "_backups"
+  },
+  "manifest_files": {
+    "main": "manifests/PLUZ-ps5-Source.json",
+    "hosted": "manifests/PLUZ-ps5-Hosted.json"
+  },
+  "retention": {
+    "main_keep": 1,
+    "hosted_keep": 3,
+    "comment": "for ELF/BIN payloads. protected_fallback entries in payload_registry.json are always kept in hosted regardless of these numbers"
+  },
+  "portable_tools": {
+    "comment": "Optional. PLUZ check verifies these paths exist if set. Leave null to skip a check (e.g. tool is on system PATH via pacman/apt/portable WinPython, or you're using PLUZ.pyz which needs only python3). Examples: Arch '/home/you/portaz/git-portable/bin/git', Windows 'D:\\\\portaz\\\\Git-p\\\\bin\\\\git.exe'.",
+    "git": null,
+    "seven_zip": null,
+    "python": null
+  },
+  "filename_pattern": "{payload}[-{variant}]_v{version}[_Expi{YYYYMMDD}].{ext}",
+  "supported_extensions": [
+    "elf",
+    "bin"
+  ],
+  "extractable_extensions": [
+    "zip"
+  ],
+  "platform_field_note": "Optional per-entry field. Absent = ps5. Values: ps5 | ps4 | ps4/ps5",
+  "manifest_fw_fields": "fw_min and fw_max are optional strings (e.g. '3.00', '12.70'). Absent = no restriction.",
+  "hw_targets": {
+    "comment": "Optional per-entry 'hw_target' field in every registry. Absent/null = not stated (never guessed).",
+    "P5": "optimized only for regular/slim PS5",
+    "P5P": "optimized for PS5 Pro",
+    "P5U": "universal: optimized for both PS5 and PS5 Pro"
+  }
+}
