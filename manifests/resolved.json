@@ -152,12 +152,12 @@
     "sha256": "1f1f7c883d5d998be1d95d7d80b718f85180f8156f257661b0f445a7c6b7c212"
   },
   "ps5-payload-manager/default": {
-    "filename": "ps5-payload-manager_v0.6.1.elf",
-    "version": "0.6.1",
-    "tag": "v0.6.1",
-    "url": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.6.1/pldmgr_v0.6.1.elf",
-    "size": 3484120,
-    "sha256": "5165cbe4c13360828bd0f5d558cdbb9e2d55b0660b1dc7f7a58d3f4ee9e23285"
+    "filename": "ps5-payload-manager_v0.6.3.elf",
+    "version": "0.6.3",
+    "tag": "v0.6.3",
+    "url": "https://github.com/itsPLK/ps5-payload-manager/releases/download/v0.6.3/pldmgr_v0.6.3.elf",
+    "size": 2795992,
+    "sha256": "2a42054fd9725e1d9595ff4add95abc30e5b49446fcdcb96c06775a376a841c4"
   },
   "ps5-pkg-manager/default": {
     "filename": "ps5-pkg-manager_v1.5.1.elf",
