@@ -64,22 +64,6 @@
       "author": "ps5-payload-dev",
       "author_url": "https://github.com/ps5-payload-dev",
       "checksum": "54730c867c6e1148536fdcb370e63a7762d989ea87b62488ad4caff64d43f263"
-    },
-    {
-      "name": "WK-AutoLoader (X-F1REBALL-X)",
-      "filename": "wk-autoloader_v1.1.2.elf",
-      "url": "https://github.com/X-F1REBALL-X/wk-autoloader/releases/download/v1.1.2/wk-autoloader.elf",
-      "backup_url": null,
-      "description": "FW 1.00-12.70 -- port 1022",
-      "version": "1.1.2",
-      "fw_min": "1.00",
-      "fw_max": "12.70",
-      "platform": "ps5",
-      "hw_target": null,
-      "category": "Network",
-      "author": "X-F1REBALL-X",
-      "author_url": "https://github.com/X-F1REBALL-X",
-      "checksum": "c5489f708e0e19769fd8d84c667942916778af39924d23c13e42f9a8f93c544c"
     }
   ]
 }

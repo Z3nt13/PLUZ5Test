@@ -254,13 +254,5 @@
     "url": "https://github.com/ps5-payload-dev/websrv/releases/download/v0.34/websrv-ps5.elf",
     "size": 1597864,
     "sha256": "54730c867c6e1148536fdcb370e63a7762d989ea87b62488ad4caff64d43f263"
-  },
-  "wk-autoloader/default": {
-    "filename": "wk-autoloader_v1.1.2.elf",
-    "version": "1.1.2",
-    "tag": "v1.1.2",
-    "url": "https://github.com/X-F1REBALL-X/wk-autoloader/releases/download/v1.1.2/wk-autoloader.elf",
-    "size": 5604608,
-    "sha256": "c5489f708e0e19769fd8d84c667942916778af39924d23c13e42f9a8f93c544c"
   }
 }
