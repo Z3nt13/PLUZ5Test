@@ -51,11 +51,11 @@
     },
     {
       "name": "ShadowMountPlus (Beta)",
-      "filename": "ShadowMountPlus-Beta_v1.7beta6-fix2.elf",
-      "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta6-fix2/shadowmountplus.elf",
+      "filename": "ShadowMountPlus-Beta_v1.7beta8.elf",
+      "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta8/shadowmountplus.elf",
       "backup_url": null,
       "description": "Slower-moving, more-tested track. Always kept regardless of retention count.",
-      "version": "1.7beta6-fix2",
+      "version": "1.7beta8",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -63,7 +63,7 @@
       "category": "Game Tools",
       "author": "drakmor",
       "author_url": "https://github.com/drakmor",
-      "checksum": "ec87ad20f78be2d7cb82e9d77e72352b079e049baac3c1a211960ccd6f252e62"
+      "checksum": "7163472217a2390f5bcbe3b61a96963976f7b7bd84d960b8d926f35b9cbecf28"
     }
   ]
 }

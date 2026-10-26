@@ -64,12 +64,12 @@
     "sha256": "e7a6bb544adb2fb2a61aa9cc83b0ad15f70b32d7511a3de0f1fb88812f11983c"
   },
   "ShadowMountPlus/Beta": {
-    "filename": "ShadowMountPlus-Beta_v1.7beta6-fix2.elf",
-    "version": "1.7beta6-fix2",
-    "tag": "1.7beta6-fix2",
-    "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta6-fix2/shadowmountplus.elf",
-    "size": 2517224,
-    "sha256": "ec87ad20f78be2d7cb82e9d77e72352b079e049baac3c1a211960ccd6f252e62"
+    "filename": "ShadowMountPlus-Beta_v1.7beta8.elf",
+    "version": "1.7beta8",
+    "tag": "1.7beta8",
+    "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta8/shadowmountplus.elf",
+    "size": 3264664,
+    "sha256": "7163472217a2390f5bcbe3b61a96963976f7b7bd84d960b8d926f35b9cbecf28"
   },
   "elf-launcher/default": {
     "filename": "elf-launcher_v2.0.5.elf",
