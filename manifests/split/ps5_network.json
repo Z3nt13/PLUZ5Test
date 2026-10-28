@@ -19,11 +19,11 @@
     },
     {
       "name": "elfldr (itsPLK)",
-      "filename": "elfldr-itsPLK_v0.26-bb1e117.elf",
-      "url": "https://github.com/itsPLK/ps5-elfldr/releases/download/v0.26-bb1e117/elfldr-ps5-v0.26-bb1e117.elf",
+      "filename": "elfldr-itsPLK_v0.27-b57d0e9.elf",
+      "url": "https://github.com/itsPLK/ps5-elfldr/releases/download/v0.27-b57d0e9/elfldr-ps5-v0.27-b57d0e9.elf",
       "backup_url": null,
       "description": "unset -- fill in from release notes",
-      "version": "0.26-bb1e117",
+      "version": "0.27-b57d0e9",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -31,7 +31,7 @@
       "category": "Network",
       "author": "itsPLK",
       "author_url": "https://github.com/itsPLK",
-      "checksum": "fa3f0c2b778318000982ada05c01bde70ac875c85e4be6fcc9b5ba836f6d1c3c"
+      "checksum": "116d023e9a6cb243d1d6c539b325bd0d140cc79de3afc3add5f34a98ccda4c93"
     },
     {
       "name": "ftpsrv (ps5-payload-dev)",
