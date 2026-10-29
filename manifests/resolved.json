@@ -40,12 +40,12 @@
     "sha256": "3561120f85e0ec32de5de15cdd61a1fe8d5146eb4c6aa99ee88209914a2774b1"
   },
   "JailbreakStore/default": {
-    "filename": "JailbreakStore_vRelease.elf",
-    "version": "Release",
-    "tag": "Release",
-    "url": "https://github.com/notmaj0r/JailbreakStore/releases/download/Release/JailbreakStore.elf",
-    "size": 2261576,
-    "sha256": "deb47ab4a9cee35c58a6777fb99eaeb397528e2518b4d4f5db52e8dce373de55"
+    "filename": "JailbreakStore_vRelapse.elf",
+    "version": "Relapse",
+    "tag": "Relapse",
+    "url": "https://github.com/notmaj0r/JailbreakStore/releases/download/Relapse/JailbreakStore.elf",
+    "size": 2262784,
+    "sha256": "ca6b3c707f86c040269a34234046925080466bcc9266683e731e5442d22458ba"
   },
   "PIZZA-HEN/default": {
     "filename": "PIZZA-HEN_v2.00.elf",

@@ -83,11 +83,11 @@
     },
     {
       "name": "JailbreakStore",
-      "filename": "JailbreakStore_vRelease.elf",
-      "url": "https://github.com/notmaj0r/JailbreakStore/releases/download/Release/JailbreakStore.elf",
+      "filename": "JailbreakStore_vRelapse.elf",
+      "url": "https://github.com/notmaj0r/JailbreakStore/releases/download/Relapse/JailbreakStore.elf",
       "backup_url": null,
       "description": "unset -- fill in from release notes",
-      "version": "Release",
+      "version": "Relapse",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -95,7 +95,7 @@
       "category": "System Utility",
       "author": "notmaj0r",
       "author_url": "https://github.com/notmaj0r",
-      "checksum": "deb47ab4a9cee35c58a6777fb99eaeb397528e2518b4d4f5db52e8dce373de55"
+      "checksum": "ca6b3c707f86c040269a34234046925080466bcc9266683e731e5442d22458ba"
     },
     {
       "name": "PIZZA-HEN",
