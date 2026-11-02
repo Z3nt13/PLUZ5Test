@@ -72,12 +72,12 @@
     "sha256": "7163472217a2390f5bcbe3b61a96963976f7b7bd84d960b8d926f35b9cbecf28"
   },
   "elf-launcher/default": {
-    "filename": "elf-launcher_v2.0.5.elf",
-    "version": "2.0.5",
-    "tag": "v2.0.5",
-    "url": "https://github.com/X-F1REBALL-X/elf-launcher/releases/download/v2.0.5/elf-launcher.elf",
-    "size": 1409032,
-    "sha256": "1b4494e669ef07525c77036777d36a20f1eb81a708fe8262b26ffffa9452f547"
+    "filename": "elf-launcher_v2.0.6.elf",
+    "version": "2.0.6",
+    "tag": "v2.0.6",
+    "url": "https://github.com/X-F1REBALL-X/elf-launcher/releases/download/v2.0.6/elf-launcher.elf",
+    "size": 1424864,
+    "sha256": "530dd1e02d966f24932a10c96918ed36848718c352dc94f1e497084cf2ff4fde"
   },
   "elfldr/default": {
     "filename": "elfldr_v0.27.elf",
