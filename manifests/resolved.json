@@ -8,20 +8,20 @@
     "sha256": "d74e4cd119b2bb1fd423f2f5b1c9a7f096b3e588c753af1ab48b983d56216a52"
   },
   "CheatRunner/RDX": {
-    "filename": "CheatRunner-RDX_v0.18.elf",
-    "version": "0.18",
-    "tag": "v0.18",
-    "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18/CheatRunner.elf",
-    "size": 8272800,
-    "sha256": "4ae1ea4e37b2e67d5487355ddf671f166861ed6dceea348c048ad060770c0140"
+    "filename": "CheatRunner-RDX_v0.18.1.elf",
+    "version": "0.18.1",
+    "tag": "v0.18.1",
+    "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18.1/CheatRunner.elf",
+    "size": 8289200,
+    "sha256": "80535260027983f09fc9d131e11e13591de61ef5eeea458825598263862d2ce8"
   },
   "CheatRunner/default": {
-    "filename": "CheatRunner_v0.18.elf",
-    "version": "0.18",
-    "tag": "v0.18",
-    "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18/CheatRunner.elf",
-    "size": 8272800,
-    "sha256": "4ae1ea4e37b2e67d5487355ddf671f166861ed6dceea348c048ad060770c0140"
+    "filename": "CheatRunner_v0.18.1.elf",
+    "version": "0.18.1",
+    "tag": "v0.18.1",
+    "url": "https://github.com/notmaj0r/CheatRunner/releases/download/v0.18.1/CheatRunner.elf",
+    "size": 8289200,
+    "sha256": "80535260027983f09fc9d131e11e13591de61ef5eeea458825598263862d2ce8"
   },
   "ChronicLoader-PS5-Payload/default": {
     "filename": "ChronicLoader-PS5-Payload_v0.1.elf",
