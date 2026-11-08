@@ -232,12 +232,12 @@
     "sha256": "a86c3e69ed38656310b41af4f9221bdb2264ff4daf93fb4c2515fd54a216b701"
   },
   "ps5-webkit-autoloader/default": {
-    "filename": "ps5-webkit-autoloader_v0.7.0.elf",
-    "version": "0.7.0",
-    "tag": "v0.7.0",
-    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.7.0/webkit-autoloader-installer_v0.7.0.elf",
+    "filename": "ps5-webkit-autoloader_v0.7.1.elf",
+    "version": "0.7.1",
+    "tag": "v0.7.1",
+    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.7.1/webkit-autoloader-installer_v0.7.1.elf",
     "size": 2082048,
-    "sha256": "10cb38baae078e41f252cffb0d356829c89ee63fd3234f1fd1e6b19f81eab1c7"
+    "sha256": "df60538570e9811bb0b4652a3fdb3e1a35ec3455b3ca7c80edc4140c5bb47ce2"
   },
   "ps5library-agent/default": {
     "filename": "ps5library-agent_v0.2.91.elf",
