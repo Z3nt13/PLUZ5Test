@@ -56,20 +56,20 @@
     "sha256": "8535d399612d61c50a528b2ae416f2fc3ccfb7480296df99c17302583fb3e345"
   },
   "ProsperoMgr/default": {
-    "filename": "ProsperoMgr_v1.1.elf",
-    "version": "1.1",
-    "tag": "v1.1",
-    "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.1/ProsperoMgr.elf",
-    "size": 8841088,
-    "sha256": "e7a6bb544adb2fb2a61aa9cc83b0ad15f70b32d7511a3de0f1fb88812f11983c"
+    "filename": "ProsperoMgr_v1.2.elf",
+    "version": "1.2",
+    "tag": "v1.2",
+    "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.2/ProsperoMgr.elf",
+    "size": 9619040,
+    "sha256": "127394cc4f1ac7347fea509e010e80bab7b5ee13d820665474cdc3928d173bce"
   },
   "ShadowMountPlus/Beta": {
-    "filename": "ShadowMountPlus-Beta_v1.7beta8.elf",
-    "version": "1.7beta8",
-    "tag": "1.7beta8",
-    "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta8/shadowmountplus.elf",
-    "size": 3264664,
-    "sha256": "7163472217a2390f5bcbe3b61a96963976f7b7bd84d960b8d926f35b9cbecf28"
+    "filename": "ShadowMountPlus-Beta_v1.7beta12.elf",
+    "version": "1.7beta12",
+    "tag": "1.7beta12",
+    "url": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta12/shadowmountplus.elf",
+    "size": 3626576,
+    "sha256": "8755172ec9bef1bff5453ea75606e0caf7c41b5963f94f5a1087e7e8c6d9b1bd"
   },
   "elf-launcher/default": {
     "filename": "elf-launcher_v2.0.6.elf",
@@ -112,12 +112,12 @@
     "sha256": "e8c8e57bbda31b5d16d131797aac6f83b555cae8d439b1f475c952f3d9554eff"
   },
   "ftpsrv/ps5-payload": {
-    "filename": "ftpsrv-ps5-payload_v0.21.1.elf",
-    "version": "0.21.1",
-    "tag": "v0.21.1",
-    "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21.1/ftpsrv-ps5.elf",
-    "size": 191864,
-    "sha256": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
+    "filename": "ftpsrv-ps5-payload_v0.22.elf",
+    "version": "0.22",
+    "tag": "v0.22",
+    "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.22/ftpsrv-ps5.elf",
+    "size": 192432,
+    "sha256": "41148c2c1cad1ea9e7cfde03e389fa918e3338e896d06167346de09adbdc8757"
   },
   "hwinfo-bench/default": {
     "filename": "hwinfo-bench_v0.1.elf",

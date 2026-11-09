@@ -35,11 +35,11 @@
     },
     {
       "name": "ftpsrv (ps5-payload-dev)",
-      "filename": "ftpsrv-ps5-payload_v0.21.1.elf",
-      "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21.1/ftpsrv-ps5.elf",
+      "filename": "ftpsrv-ps5-payload_v0.22.elf",
+      "url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.22/ftpsrv-ps5.elf",
       "backup_url": null,
       "description": "unset -- fill in from release notes",
-      "version": "0.21.1",
+      "version": "0.22",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -47,7 +47,7 @@
       "category": "Network",
       "author": "ps5-payload-dev",
       "author_url": "https://github.com/ps5-payload-dev",
-      "checksum": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
+      "checksum": "41148c2c1cad1ea9e7cfde03e389fa918e3338e896d06167346de09adbdc8757"
     },
     {
       "name": "websrv",
