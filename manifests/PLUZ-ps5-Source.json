@@ -147,11 +147,11 @@
     },
     {
       "name": "ELF Launcher (X-F1REBALL-X)",
-      "filename": "elf-launcher_v2.0.6.elf",
-      "url": "https://github.com/X-F1REBALL-X/elf-launcher/releases/download/v2.0.6/elf-launcher.elf",
+      "filename": "elf-launcher_v2.1.6.elf",
+      "url": "https://github.com/X-F1REBALL-X/elf-launcher/releases/download/v2.1.6/elf-launcher.elf",
       "backup_url": null,
       "description": "port 1000",
-      "version": "2.0.6",
+      "version": "2.1.6",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -159,7 +159,7 @@
       "category": "File Management",
       "author": "X-F1REBALL-X",
       "author_url": "https://github.com/X-F1REBALL-X",
-      "checksum": "530dd1e02d966f24932a10c96918ed36848718c352dc94f1e497084cf2ff4fde"
+      "checksum": "5c4a9c3146cf7ac14ce0dab35358eb5ab9cd17c647735d9fcd0932913ac2a9d2"
     },
     {
       "name": "elfldr",
