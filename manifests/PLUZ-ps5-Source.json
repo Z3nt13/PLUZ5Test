@@ -115,11 +115,11 @@
     },
     {
       "name": "ProsperoMgr",
-      "filename": "ProsperoMgr_v1.2.elf",
-      "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.2/ProsperoMgr.elf",
+      "filename": "ProsperoMgr_v1.2.1.elf",
+      "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.2.1/ProsperoMgr.elf",
       "backup_url": null,
       "description": "All-in-one PS5 manager -- files, transfers, PKG installer, save backups, payload autoloader.",
-      "version": "1.2",
+      "version": "1.2.1",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -127,7 +127,7 @@
       "category": "System Utility",
       "author": "notmaj0r",
       "author_url": "https://github.com/notmaj0r",
-      "checksum": "127394cc4f1ac7347fea509e010e80bab7b5ee13d820665474cdc3928d173bce"
+      "checksum": "f9240e53ac5f035b36fb6eca2845dd49827eddfb133d1bbb2810b1a025db9c5b"
     },
     {
       "name": "ShadowMountPlus (Beta)",

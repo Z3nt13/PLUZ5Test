@@ -56,12 +56,12 @@
     "sha256": "8535d399612d61c50a528b2ae416f2fc3ccfb7480296df99c17302583fb3e345"
   },
   "ProsperoMgr/default": {
-    "filename": "ProsperoMgr_v1.2.elf",
-    "version": "1.2",
-    "tag": "v1.2",
-    "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.2/ProsperoMgr.elf",
-    "size": 9619040,
-    "sha256": "127394cc4f1ac7347fea509e010e80bab7b5ee13d820665474cdc3928d173bce"
+    "filename": "ProsperoMgr_v1.2.1.elf",
+    "version": "1.2.1",
+    "tag": "v1.2.1",
+    "url": "https://github.com/notmaj0r/ProsperoMgr/releases/download/v1.2.1/ProsperoMgr.elf",
+    "size": 9717896,
+    "sha256": "f9240e53ac5f035b36fb6eca2845dd49827eddfb133d1bbb2810b1a025db9c5b"
   },
   "ShadowMountPlus/Beta": {
     "filename": "ShadowMountPlus-Beta_v1.7beta12.elf",
