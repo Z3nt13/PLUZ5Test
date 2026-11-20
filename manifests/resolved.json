@@ -80,12 +80,12 @@
     "sha256": "5c4a9c3146cf7ac14ce0dab35358eb5ab9cd17c647735d9fcd0932913ac2a9d2"
   },
   "elfldr/default": {
-    "filename": "elfldr_v0.27.elf",
-    "version": "0.27",
-    "tag": "v0.27",
-    "url": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.27/elfldr-ps5.elf",
+    "filename": "elfldr_v0.28.elf",
+    "version": "0.28",
+    "tag": "v0.28",
+    "url": "https://github.com/ps5-payload-dev/elfldr/releases/download/v0.28/elfldr-ps5.elf",
     "size": 394568,
-    "sha256": "82f6227610172c98bad6efe68219fc93a10027035991f47eb4b75532d023407d"
+    "sha256": "66968bae6159d8fb06125fcd43fb99cf64d6bfdf730c70f37a6f5d056ff63458"
   },
   "elfldr/itsPLK": {
     "filename": "elfldr-itsPLK_v0.27-b57d0e9.elf",
@@ -232,12 +232,12 @@
     "sha256": "a86c3e69ed38656310b41af4f9221bdb2264ff4daf93fb4c2515fd54a216b701"
   },
   "ps5-webkit-autoloader/default": {
-    "filename": "ps5-webkit-autoloader_v0.7.1.elf",
-    "version": "0.7.1",
-    "tag": "v0.7.1",
-    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.7.1/webkit-autoloader-installer_v0.7.1.elf",
-    "size": 2082048,
-    "sha256": "df60538570e9811bb0b4652a3fdb3e1a35ec3455b3ca7c80edc4140c5bb47ce2"
+    "filename": "ps5-webkit-autoloader_v0.8.2.elf",
+    "version": "0.8.2",
+    "tag": "v0.8.2",
+    "url": "https://github.com/itsPLK/ps5-webkit-autoloader/releases/download/v0.8.2/webkit-autoloader-installer_v0.8.2.elf",
+    "size": 1885440,
+    "sha256": "1c415bc124944c85b86a4751006b98010b977f142142d67306d13804899bad54"
   },
   "ps5library-agent/default": {
     "filename": "ps5library-agent_v0.2.91.elf",
