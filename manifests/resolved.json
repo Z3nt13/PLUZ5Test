@@ -240,12 +240,12 @@
     "sha256": "6224b1d4e221b3dcae1f198883ee998f16c824e518112e64189c5d1d376ed8d6"
   },
   "ps5library-agent/default": {
-    "filename": "ps5library-agent_v0.2.91.elf",
-    "version": "0.2.91",
-    "tag": "v0.2.91",
-    "url": "https://github.com/rdiol12/PS5Library/releases/download/v0.2.91/ps5library-agent.elf",
-    "size": 13973400,
-    "sha256": "ac78389a628401edba3c081f00156238ad5652b1b7ad241f5ccc7713179f0c82"
+    "filename": "ps5library-agent_v0.2.92.elf",
+    "version": "0.2.92",
+    "tag": "v0.2.92",
+    "url": "https://github.com/rdiol12/PS5Library/releases/download/v0.2.92/ps5library-agent.elf",
+    "size": 13970344,
+    "sha256": "f2f25588354f0f04945913fa8c9dcd5095a4904f1da2207150fba787fa758176"
   },
   "websrv/default": {
     "filename": "websrv_v0.34.elf",

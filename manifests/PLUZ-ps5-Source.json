@@ -483,11 +483,11 @@
     },
     {
       "name": "PS5Library Agent (rdiol12)",
-      "filename": "ps5library-agent_v0.2.91.elf",
-      "url": "https://github.com/rdiol12/PS5Library/releases/download/v0.2.91/ps5library-agent.elf",
+      "filename": "ps5library-agent_v0.2.92.elf",
+      "url": "https://github.com/rdiol12/PS5Library/releases/download/v0.2.92/ps5library-agent.elf",
       "backup_url": null,
       "description": "Console-side agent ELF for the PS5Library native storefront. Pairs with PS5Library.pkg. Provides the on-console backend that the storefront UI talks to. GPL-3.0.",
-      "version": "0.2.91",
+      "version": "0.2.92",
       "fw_min": null,
       "fw_max": null,
       "platform": "ps5",
@@ -495,7 +495,7 @@
       "category": "File Management",
       "author": "rdiol12",
       "author_url": "https://github.com/rdiol12",
-      "checksum": "ac78389a628401edba3c081f00156238ad5652b1b7ad241f5ccc7713179f0c82"
+      "checksum": "f2f25588354f0f04945913fa8c9dcd5095a4904f1da2207150fba787fa758176"
     },
     {
       "name": "websrv",
